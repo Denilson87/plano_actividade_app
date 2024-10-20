@@ -19,16 +19,6 @@
                         <span class="ml-4">Dashboards</span>
                     </a>
                 </li>
-
-                @if (auth()->user()->can('pos.menu'))
-                <li class="{{ Request::is('pos*') ? 'active' : '' }}">
-                    <a href="{{ route('pos.index') }}" class="svg-icon">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="ml-3">POS</span>
-                    </a>
-                </li>
-                @endif
-
                 <hr>
 
                 @if (auth()->user()->can('orders.menu'))
@@ -78,19 +68,19 @@
                     <ul id="products" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
                         <li class="{{ Request::is(['products']) ? 'active' : '' }}">
                             <a href="{{ route('products.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Products</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Actividades</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['products/create']) ? 'active' : '' }}">
                             <a href="{{ route('products.create') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Add Product</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Adicionar Actividade</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is(['categories*']) ? 'active' : '' }}">
+                        <!-- <li class="{{ Request::is(['categories*']) ? 'active' : '' }}">
                             <a href="{{ route('categories.index') }}">
                                 <i class="fa-solid fa-arrow-right"></i><span>Categories</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 @endif

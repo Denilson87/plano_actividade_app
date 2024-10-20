@@ -22,14 +22,13 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Product List</h4>
-                    <p class="mb-0">A product dashboard lets you easily gather and visualize product data from optimizing <br>
-                        the product experience, ensuring product retention. </p>
+                    <h4 class="mb-3">Lista de actividades</h4>
+                    <p class="mb-0">Um painel de actividades permite coletar e visualizar facilmente os dados do produto a partir da otimização <br>
+                    a experiência das actividades, garantindo complitude das actividades.</p>
                 </div>
                 <div>
-                <a href="{{ route('products.importView') }}" class="btn btn-success add-list">Import</a>
-                <a href="{{ route('products.exportData') }}" class="btn btn-warning add-list">Export</a>
-                <a href="{{ route('products.create') }}" class="btn btn-primary add-list">Add Product</a>
+                <a href="{{ route('products.exportData') }}" class="btn btn-warning add-list">Exportar</a>
+                <a href="{{ route('products.create') }}" class="btn btn-primary add-list">Add Actividades</a>
                 </div>
             </div>
         </div>
@@ -50,12 +49,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3 align-self-center" for="search">Search:</label>
+                        <label class="control-label col-sm-3 align-self-center" for="search">Pesquisar:</label>
                         <div class="input-group col-sm-8">
                             <input type="text" id="search" class="form-control" name="search" placeholder="Search product" value="{{ request('search') }}">
                             <div class="input-group-append">
-                                <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
-                                <a href="{{ route('products.index') }}" class="input-group-text bg-danger"><i class="fa-solid fa-trash"></i></a>
+                                <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
+                                <a href="{{ route('products.index') }}" class="input-group-text bg-danger">Todas</a>
                             </div>
                         </div>
                     </div>
@@ -69,32 +68,24 @@
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
                             <th>No.</th>
-                            <th>Photo</th>
-                            <th>@sortablelink('product_name', 'name')</th>
-                            <th>@sortablelink('category.name', 'category')</th>
-                            <th>@sortablelink('supplier.name', 'supplier')</th>
-                            <th>@sortablelink('selling_price', 'price')</th>
+                            <th>@sortablelink('product_name', 'Actividade')</th>
+                            <th>@sortablelink('product_garage', 'Local')</th>
+                            <th>@sortablelink('buying_date.name', 'Data de inicio')</th>
+                            <th>@sortablelink('expire_date', 'Data de fim')</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Acções</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
                         @forelse ($products as $product)
                         <tr>
-                            <td>{{ (($products->currentPage() * 10) - 10) + $loop->iteration  }}</td>
-                            <td>
-                                <img class="avatar-60 rounded" src="{{ $product->product_image ? asset('storage/products/'.$product->product_image) : asset('assets/images/product/default.webp') }}">
-                            </td>
+                            <td>{{ (($products->currentPage() * 10) - 10) + $loop->iteration  }}</td>                         
                             <td>{{ $product->product_name }}</td>
-                            <td>{{ $product->category->name }}</td>
-                            <td>{{ $product->supplier->name }}</td>
-                            <td>{{ $product->selling_price }}</td>
-                            <td>
-                                @if ($product->expire_date > Carbon\Carbon::now()->format('Y-m-d'))
-                                    <span class="badge rounded-pill bg-success">Valid</span>
-                                @else
-                                    <span class="badge rounded-pill bg-danger">Invalid</span>
-                                @endif
+                            <td>{{ $product->product_garage }}</td>
+                            <td>{{ $product->buying_date }}</td>
+                            <td>{{ $product->expire_date }}</td>
+                            <td>                              
+                                    <span class="badge rounded-pill bg-danger">{{ $product->category->name }}</span>                             
                             </td>
                             <td>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="margin-bottom: 5px">
@@ -115,7 +106,7 @@
 
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
+                            <div class="iq-alert-text">Sem Actividades este Mes</div>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="ri-close-line"></i>
                             </button>
