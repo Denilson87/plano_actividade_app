@@ -55,36 +55,31 @@
                     </ul>
                 </li>
                 @endif
-
                 @if (auth()->user()->can('product.menu'))
                 <li>
                     <a href="#products" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-boxes-stacked"></i>
-                        <span class="ml-3">Products</span>
+                        <span class="ml-3">Actividades M&E</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
                     </a>
                     <ul id="products" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
-                        <li class="{{ Request::is(['products']) ? 'active' : '' }}">
-                            <a href="{{ route('products.index') }}">
+                        <li class="{{ Request::is(['activities']) ? 'active' : '' }}">
+                            <a href="{{ route('activities.index') }}">
                                 <i class="fa-solid fa-arrow-right"></i><span>Actividades</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is(['products/create']) ? 'active' : '' }}">
-                            <a href="{{ route('products.create') }}">
+                        <li class="{{ Request::is(['activities/create']) ? 'active' : '' }}">
+                            <a href="{{ route('activities.create') }}">
                                 <i class="fa-solid fa-arrow-right"></i><span>Adicionar Actividade</span>
                             </a>
                         </li>
-                        <!-- <li class="{{ Request::is(['categories*']) ? 'active' : '' }}">
-                            <a href="{{ route('categories.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Categories</span>
-                            </a>
-                        </li> -->
                     </ul>
                 </li>
                 @endif
 
+                <hr>
                 <hr>
 
                 @if (auth()->user()->can('employee.menu'))

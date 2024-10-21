@@ -10,6 +10,7 @@ class Activity extends Model
 {
 
     use HasFactory, Sortable;
+    protected $table = 'activity';
 
     protected $fillable = [
         'activity',

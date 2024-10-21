@@ -21,7 +21,7 @@ class ActivityFactory extends Factory
         return [
             'activity' => fake()->word(),
             'location' => fake()->word(),
-            'date' => Carbon::now()->addYears(2),
+            'date' => fake()->word(),
             'resourse' => fake()->word(),
             'status'=> fake()->word(),
             'obs' => fake()->word(),

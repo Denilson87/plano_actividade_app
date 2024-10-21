@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\ActivityController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\CategoryController;
@@ -86,6 +87,15 @@ Route::middleware(['permission:product.menu'])->group(function () {
     Route::post('/products/import', [ProductController::class, 'importStore'])->name('products.importStore');
     Route::get('/products/export', [ProductController::class, 'exportData'])->name('products.exportData');
     Route::resource('/products', ProductController::class);
+});
+
+// ====== ACTIVITIES ======
+Route::middleware(['permission:product.menu'])->group(function () {
+    Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
+    Route::get('/activities/create', [ActivityController::class, 'create'])->name('activities.create');
+    Route::post('/activities/create', [ActivityController::class, 'store'])->name('activities.store');
+    Route::get('/activites/export', [ActivityController::class, 'exportData'])->name('activites.exportData');
+    //Route::resource('/activites', ActivityController::class);
 });
 
 // ====== CATEGORY PRODUCTS ======
