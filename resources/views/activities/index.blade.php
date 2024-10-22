@@ -92,7 +92,7 @@
     @elseif ($activity->status === 'completo')
         <span class="badge rounded-pill bg-success">conpleto</span>
     @elseif ($activity->status === 'adiado')
-        <span class="badge rounded-pill bg-yellow">adiado</span>
+        <span class="badge rounded-pill bg-danger">adiado</span>
     @endif
 </td>  
 <td>{{ $activity->obs }}</td>                            
