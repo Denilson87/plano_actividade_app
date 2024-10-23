@@ -14,12 +14,12 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Role List</h4>
-                    <p class="mb-0">A role dashboard lets you easily gather and visualize role data from optimizing <br>
-                        the role experience, ensuring role retention. </p>
+                    <h4 class="mb-3">Funções</h4>
+                    <p class="mb-0">Um painel de funções permite coletar e visualizar facilmente dados de funções a partir da otimização <br>
+                    a experiência da função, garantindo a retenção da função. </p>
                 </div>
                 <div>
-                    <a href="{{ route('role.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>Add Role</a>
+                    <a href="{{ route('role.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>Add Função</a>
                 </div>
             </div>
         </div>
@@ -60,8 +60,8 @@
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
                             <th>No.</th>
-                            <th>Role Name</th>
-                            <th>Action</th>
+                            <th>Função</th>
+                            <th>Acção</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">

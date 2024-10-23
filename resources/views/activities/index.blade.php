@@ -27,7 +27,7 @@
                     a experiência das actividades, garantindo complitude das actividades.</p>
                 </div>
                 <div>
-                <a href="{{ route('products.exportData') }}" class="btn btn-warning add-list">Exportar</a>
+                <a href="{{ route('activites.exportData') }}" class="btn btn-warning add-list">Exportar</a>
                 <a href="{{ route('activities.create') }}" class="btn btn-primary add-list">Add Actividades</a>
                 </div>
             </div>
@@ -93,11 +93,11 @@
         <span class="badge rounded-pill bg-success">conpleto</span>
     @elseif ($activity->status === 'adiado')
         <span class="badge rounded-pill bg-danger">adiado</span>
-    @endif
+    @endif   
 </td>  
 <td>{{ $activity->obs }}</td>                            
                             <td>
-                                <form action="" method="POST" style="margin-bottom: 5px"> 
+                                <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" style="margin-bottom: 5px"> 
                                 @method('delete')
                                     @csrf
                                     <div class="d-flex align-items-center list-action">
@@ -105,7 +105,7 @@
                                         href=""><i class="ri-eye-line mr-0"></i>   
                                         </a>
                                         <a class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
-                                        href=""><i class="ri-pencil-line mr-0"></i>   
+                                        href="{{ route('activities.edit', $activity->id) }}"><i class="ri-pencil-line mr-0"></i>   
                                         </a>
                                             <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('Are you sure you want to delete this record?')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="ri-delete-bin-line mr-0"></i></button>
                                     </div>

@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Aicionar Actividade</h4>
+                        <h4 class="card-title">Adicionar Actividade</h4>
                     </div>
                 </div>
 
@@ -23,10 +23,19 @@
                         <!-- begin: Input Image -->                    
                         <!-- end: Input Image -->
                         <!-- begin: Input Data -->
+                        <div class="form-group row align-items-center">
+                            <div class="col-md-12">
+                                <div class="profile-img-edit">
+                                    <div class="crm-profile-img-edit">
+                                        <img class="crm-profile-pic rounded-circle avatar-110" id="image-preview" src="{{ asset('assets/images/product/pngtree-work-plan-list-png-image_4896609.jpg') }}" alt="profile-pic">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class=" row align-items-center">
                             <div class="form-group col-md-12">
                                 <label for="activity"><b>Actividade</b> <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('activity') is-invalid @enderror" id="activity" name="activity" value="{{ old('activity') }}" required>
+                                <input type="text" class="form-control @error('activity') is-invalid @enderror" placeholder="Descreva a actividade" id="activity" name="activity" value="{{ old('activity') }}" required>
                                 @error('activity')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -36,7 +45,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="location"><b>local da actividade</b> <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ old('location') }}">
+                                <input type="text" class="form-control @error('location') is-invalid @enderror" placeholder="Descreva o local da actividade" id="location" name="location" value="{{ old('location') }}">
                                 @error('location')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -45,7 +54,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="date"><b>Data</b> <span class="text-danger">*</span></label>
-                                <input id="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" />
+                                <input id="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="2024/01/01" value="{{ old('date') }}" />
                                 @error('date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -54,7 +63,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="resourse"><b>Recurcos necessários</b> <span class="text-danger">*</span></label>
-                                <input id="resourse" class="form-control @error('resourse') is-invalid @enderror" name="resourse" value="{{ old('resourse') }}" />
+                                <input id="resourse" class="form-control @error('resourse') is-invalid @enderror" placeholder="Descreva os recursos necessários para a actividade" name="resourse" value="{{ old('resourse') }}" />
                                 @error('resourse')
                                 <div class="invalid-feedback">
                                     {{ $message }}

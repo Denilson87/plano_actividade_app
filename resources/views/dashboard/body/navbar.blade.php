@@ -5,7 +5,7 @@
                 <i class="ri-menu-line wrapper-menu"></i>
                 <a href="{{ route('dashboard') }}" class="header-logo">
                     <img src="../assets/images/logo.png" class="img-fluid rounded-normal" alt="logo">
-                    <h5 class="logo-title ml-3">POSDash</h5>
+                    <h5 class="logo-title ml-3">Plano Mensal de actividades</h5>
                 </a>
             </div>
             <div class="iq-search-bar device-search">
@@ -41,7 +41,7 @@
                         <li class="nav-item nav-icon dropdown caption-content">
                             <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton4"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ auth()->user()->photo ? asset('storage/profile/'.auth()->user()->photo) : asset('assets/images/user/1.png') }}" class="img-fluid rounded" alt="user">
+                                <img src="{{ auth()->user()->photo ? asset('storage/profile/'.auth()->user()->photo) : asset('assets/images/user/04.jpg') }}" class="img-fluid rounded" alt="user">
                             </a>
                             <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <div class="card shadow-none m-0">
@@ -49,7 +49,7 @@
                                         <div class="media-body profile-detail text-center">
                                             <img src="{{ asset('assets/images/page-img/profile-bg.jpg') }}" alt="profile-bg"
                                                 class="rounded-top img-fluid mb-4">
-                                            <img src="{{ auth()->user()->photo ? asset('storage/profile/'.auth()->user()->photo) : asset('assets/images/user/1.png') }}" alt="profile-img"
+                                            <img src="{{ auth()->user()->photo ? asset('storage/profile/'.auth()->user()->photo) : asset('assets/images/user/04.jpg') }}" alt="profile-img"
                                                 class="rounded profile-img img-fluid avatar-70">
                                         </div>
                                         <div class="p-3">

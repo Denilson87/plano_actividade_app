@@ -2,7 +2,7 @@
 <div class="iq-sidebar sidebar-default ">
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
         <a href="{{ route('dashboard') }}" class="header-logo">
-            <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">POSDash</h5>
+            <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">PMA CCS</h5>
         </a>
         <div class="iq-menu-bt-sidebar ml-0">
             <i class="las la-bars wrapper-menu"></i>
@@ -25,7 +25,7 @@
                 <li>
                     <a href="#orders" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-basket-shopping"></i>
-                        <span class="ml-3">Orders</span>
+                        <span class="ml-3">Geral</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -34,22 +34,18 @@
 
                         <li class="{{ Request::is('orders/pending*') ? 'active' : '' }}">
                             <a href="{{ route('order.pendingOrders') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Pending Orders</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Actividades pendentes</span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('pending/due*') ? 'active' : '' }}">
+                            <a href="{{ route('order.pendingDue') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span>Actividades Adiadas</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('orders/complete*') ? 'active' : '' }}">
                             <a href="{{ route('order.completeOrders') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Complete Orders</span>
-                            </a>
-                        </li>
-                        <li class="{{ Request::is('pending/due*') ? 'active' : '' }}">
-                            <a href="{{ route('order.pendingDue') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Pending Due</span>
-                            </a>
-                        </li>
-                        <li class="{{ Request::is(['stock*']) ? 'active' : '' }}">
-                            <a href="{{ route('order.stockManage') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Stock Management</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Grau de cumprimentos</span>
                             </a>
                         </li>
                     </ul>
@@ -109,7 +105,7 @@
                 </li>
                 @endif
 
-                @if (auth()->user()->can('salary.menu'))
+                <!-- @if (auth()->user()->can('salary.menu'))
                 <li>
                     <a href="#advance-salary" class="collapsed" data-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-cash-register"></i>
@@ -142,7 +138,7 @@
                         </li>
                     </ul>
                 </li>
-                @endif
+                @endif -->
 
                 @if (auth()->user()->can('attendence.menu'))
                 <li>
@@ -176,7 +172,7 @@
                 <li>
                     <a href="#permission" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-key"></i>
-                        <span class="ml-3">Role & Permission</span>
+                        <span class="ml-3">Funções e Permissões</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -184,17 +180,17 @@
                     <ul id="permission" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
                         <li class="{{ Request::is(['permission', 'permission/create', 'permission/edit/*']) ? 'active' : '' }}">
                             <a href="{{ route('permission.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Permissions</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Permissões</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['role', 'role/create', 'role/edit/*']) ? 'active' : '' }}">
                             <a href="{{ route('role.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Roles</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Funções</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['role/permission*']) ? 'active' : '' }}">
                             <a href="{{ route('rolePermission.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Role in Permissions</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>Funções & Permissões</span>
                             </a>
                         </li>
                     </ul>
@@ -205,7 +201,7 @@
                 <li class="{{ Request::is('users*') ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Users</span>
+                        <span class="ml-3">Utilizadores</span>
                     </a>
                 </li>
                 @endif

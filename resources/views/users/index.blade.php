@@ -14,11 +14,11 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">User List</h4>
+                    <h4 class="mb-3">Utilizadores</h4>
                 </div>
                 <div>
-                <a href="{{ route('users.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>Create User</a>
-                <a href="{{ route('users.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                <a href="{{ route('users.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>Criar utilizadores</a>
+                <a href="{{ route('users.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Todos</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                             <div class="input-group">
                                 <input type="text" id="search" class="form-control" name="search" placeholder="Search user" value="{{ request('search') }}">
                                 <div class="input-group-append">
-                                    <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
+                                    <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
                                 </div>
                             </div>
                         </div>
@@ -59,12 +59,12 @@
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
                             <th>No.</th>
-                            <th>Photo</th>
-                            <th>@sortablelink('name')</th>
+                            <th>Avatar</th>
+                            <th>@sortablelink('Nome')</th>
                             <th>@sortablelink('username')</th>
                             <th>@sortablelink('email')</th>
-                            <th>Role</th>
-                            <th>Action</th>
+                            <th>Função</th>
+                            <th>Acção</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
@@ -100,7 +100,7 @@
 
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
+                            <div class="iq-alert-text">Sem registos.</div>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="ri-close-line"></i>
                             </button>

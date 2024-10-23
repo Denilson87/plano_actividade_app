@@ -93,9 +93,15 @@ Route::middleware(['permission:product.menu'])->group(function () {
 Route::middleware(['permission:product.menu'])->group(function () {
     Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
     Route::get('/activities/create', [ActivityController::class, 'create'])->name('activities.create');
-    Route::post('/activities/create', [ActivityController::class, 'store'])->name('activities.store');
+    Route::post('/activities/store', [ActivityController::class, 'store'])->name('activities.store');
+    Route::get('/activities/details/{id}', [ActivityController::class, 'show'])->name('activities.show');
+    Route::get('/activities/update/{id}', [ActivityController::class, 'edit'])->name('activities.edit');
+    Route::put('/activities/updated/{id}', [ActivityController::class, 'update'])->name('activities.update');
+    Route::put('/role/{id}', [RoleController::class, 'roleUpdate'])->name('role.update');
+    
+    Route::delete('/activities/delete/{id}', [ActivityController::class, 'destroy'])->name('activities.destroy');
     Route::get('/activites/export', [ActivityController::class, 'exportData'])->name('activites.exportData');
-    //Route::resource('/activites', ActivityController::class);
+    Route::resource('/activites', ActivityController::class);
 });
 
 // ====== CATEGORY PRODUCTS ======

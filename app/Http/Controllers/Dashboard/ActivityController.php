@@ -53,6 +53,7 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
         $rules = [
+           
             'activity' => 'string|nullable',
             'location' => 'required|string',
             'date'=> 'date_format:Y-m-d|max:20|nullable',
@@ -72,89 +73,54 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Activity $activity)
     {
-        // Barcode Generator
-        $generator = new BarcodeGeneratorHTML();
-
-        $barcode = $generator->getBarcode($product->product_code, $generator::TYPE_CODE_128);
-
-        return view('products.show', [
-            'product' => $product,
-            'barcode' => $barcode,
+        $orderedActivities = Activity::orderBy('created_at', 'asc')->get();
+        
+        return view('activities.show', [
+            'activity' => $activity,
+            'orderedActivities' => $orderedActivities,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        return view('products.edit', [
-            'categories' => Category::all(),
-            'suppliers' => Supplier::all(),
-            'product' => $product
-        ]);
+        $activity = Activity::findOrFail($id);
+        return view('activities.edit', compact('activity'));
     }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Int $id)
     {
         $rules = [
-            'product_image' => 'image|file|max:1024',
-            'product_name' => 'required|string',
-            'category_id' => 'required|integer',
-            'supplier_id' => 'required|integer',
-            'product_garage' => 'string|nullable',
-            'product_store' => 'string|nullable',
-            'buying_date' => 'date_format:Y-m-d|max:10|nullable',
-            'expire_date' => 'date_format:Y-m-d|max:10|nullable',
-            'buying_price' => 'required|integer',
-            'selling_price' => 'required|integer',
-        ];
+
+            'activity' => 'string|nullable',
+            'location' => 'required|string',
+            'date'=> 'date_format:Y-m-d|max:20|nullable',
+            'resourse' => 'string|nullable',
+            'status' => 'string|nullable',
+            'obs' => 'string|nullable',
+            ];
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
-        if ($file = $request->file('product_image')) {
-            $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
-            $path = 'public/products/';
+        Activity::where('id', $id)->update($validatedData);        
 
-            /**
-             * Delete photo if exists.
-             */
-            if($product->product_image){
-                Storage::delete($path . $product->product_image);
-            }
-
-            $file->storeAs($path, $fileName);
-            $validatedData['product_image'] = $fileName;
-        }
-
-        Product::where('id', $product->id)->update($validatedData);
-
-        return Redirect::route('products.index')->with('success', 'Product has been updated!');
-    }
+        return Redirect::route('activities.index')->with('success', 'Activity has been updated!');
+    } 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Int $id)
     {
-        /**
-         * Delete photo if exists.
-         */
-        if($product->product_image){
-            Storage::delete('public/products/' . $product->product_image);
-        }
-
-        Product::destroy($product->id);
-
-        return Redirect::route('products.index')->with('success', 'Product has been deleted!');
+        Activity::destroy($id); // Para deletar permanentemente
+    
+        return Redirect::route('activities.index')->with('success', 'Activity has been deleted!');
     }
 
     /**
@@ -208,17 +174,17 @@ class ActivityController extends Controller
         return Redirect::route('products.index')->with('success', 'Data has been successfully imported!');
     }
 
-    public function exportExcel($products){
+    public function exportExcel($activities){
         ini_set('max_execution_time', 0);
         ini_set('memory_limit', '4000M');
 
         try {
             $spreadSheet = new Spreadsheet();
             $spreadSheet->getActiveSheet()->getDefaultColumnDimension()->setWidth(20);
-            $spreadSheet->getActiveSheet()->fromArray($products);
+            $spreadSheet->getActiveSheet()->fromArray($activities);
             $Excel_writer = new Xls($spreadSheet);
             header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="Products_ExportedData.xls"');
+            header('Content-Disposition: attachment;filename="Activity_ExportedData.xls"');
             header('Cache-Control: max-age=0');
             ob_end_clean();
             $Excel_writer->save('php://output');
@@ -233,40 +199,30 @@ class ActivityController extends Controller
      * into an Array that will be exported to Excel
      */
     function exportData(){
-        $products = Product::all()->sortByDesc('product_id');
+        $activities = Activity::all()->sortByDesc('id');
 
-        $product_array [] = array(
-            'Product Name',
-            'Category Id',
-            'Supplier Id',
-            'Product Code',
-            'Product Garage',
-            'Product Image',
-            'Product Store',
-            'Buying Date',
-            'Expire Date',
-            'Buying Price',
-            'Selling Price',
+        $activity_array [] = array(
+            'activity',
+            'location',
+            'date',
+            'resourse',
+            'status',
+            'obs',
         );
 
-        foreach($products as $product)
+        foreach($activities as $activity)
         {
-            $product_array[] = array(
-                'Product Name' => $product->product_name,
-                'Category Id' => $product->category_id,
-                'Supplier Id' => $product->supplier_id,
-                'Product Code' => $product->product_code,
-                'Product Garage' => $product->product_garage,
-                'Product Image' => $product->product_image,
-                'Product Store' =>$product->product_store,
-                'Buying Date' =>$product->buying_date,
-                'Expire Date' =>$product->expire_date,
-                'Buying Price' =>$product->buying_price,
-                'Selling Price' =>$product->selling_price,
+            $activity_array[] = array(
+                'activity' => $activity->activity,
+                'location'=>$activity->location,
+                'date'=>$activity->date,
+                'resourse'=>$activity->resourse,
+                'status'=>$activity->status,
+                'obs'=>$activity->obs,
             );
         }
 
-        $this->ExportExcel($product_array);
+        $this->ExportExcel($activity_array);
     }
 }
 
