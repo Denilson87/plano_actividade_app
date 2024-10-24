@@ -13,17 +13,10 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Adicionar Actividade</h4>
+                        <h4 class="card-title">Actualizar Actividade</h4>
                     </div>
                 </div>
-
-                <div class="card-body">
-                    <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                        <!-- begin: Input Image -->                    
-                        <!-- end: Input Image -->
-                        <!-- begin: Input Data -->
-                        <div class="form-group row align-items-center">
+                <div class="form-group row align-items-center">
                             <div class="col-md-12">
                                 <div class="profile-img-edit">
                                     <div class="crm-profile-img-edit">
@@ -32,45 +25,56 @@
                                 </div>
                             </div>
                         </div>
+                <div class="card-body">
+                    <form action="{{ route('activities.update', $activity->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                        <!-- begin: Input Image -->
+                       
+
+                        <div class="row">
+                           
+                        </div>
+                        <!-- end: Input Image -->
+                        <!-- begin: Input Data -->
                         <div class=" row align-items-center">
                             <div class="form-group col-md-12">
-                                <label for="activity"><b>Actividade</b> <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('activity') is-invalid @enderror" placeholder="Descreva a actividade" id="activity" name="activity" value="{{ old('activity') }}" required>
+                                <label for="activity">Actividade <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('activity') is-invalid @enderror" id="activity" name="activity" value="{{ old('activity', $activity->activity) }}" required>
                                 @error('activity')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
-
                             <div class="form-group col-md-6">
-                                <label for="location"><b>local da actividade</b> <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('location') is-invalid @enderror" placeholder="Descreva o local da actividade" id="location" name="location" value="{{ old('location') }}" required>
-                                @error('location')
+                                <label for="location">Local <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ old('location', $activity->location) }}" required>
+                                @error('activity')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="date"><b>Data</b> <span class="text-danger">*</span></label>
-                                <input id="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="2024/01/01" value="{{ old('date') }}"required />
-                                @error('date')
+                                <label for="date">Data de execução <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ old('date', $activity->date) }}" required>
+                                @error('activity')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="resourse"><b>Recurcos necessários</b> <span class="text-danger">*</span></label>
-                                <input id="resourse" class="form-control @error('resourse') is-invalid @enderror" placeholder="Descreva os recursos necessários para a actividade" name="resourse" value="{{ old('resourse') }}" required/>
+                                <label for="date">Recurcos necessários <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('resourse') is-invalid @enderror" id="resourse" name="resourse" value="{{ old('resourse', $activity->resourse) }}" required>
                                 @error('resourse')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
-                           
+                                                   
                             <div class="form-group col-md-6">
 <label for="category_id"><b>Status</b> <span class="text-danger">*</span></label>
 <select class="form-control" name="status" required>
@@ -84,19 +88,20 @@
 </div>
 @enderror
 </div>
-
+                                                     
 <div class="form-group col-md-6">
                                 <label for="obs"><b>Observações</b> <span class="text-danger">*</span></label>
-                                <input id="obs" class="form-control @error('obs') is-invalid @enderror" name="obs" value="sem notas..." required/>
+                                <input id="obs" class="form-control @error('obs') is-invalid @enderror" name="obs" value="sem notas..." />
                                 @error('resourse')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
+                           
                         </div>
-                        <!-- end: Input Data -->
-                        <div class="mt-2">
+                          <!-- end: Input Data -->
+                          <div class="mt-2">
                             <button type="submit" class="btn btn-primary mr-2">Save</button>
                             <a class="btn bg-danger" href="{{ route('products.index') }}">Cancel</a>
                         </div>
@@ -114,7 +119,7 @@
         format: 'yyyy-mm-dd'
         // https://gijgo.com/datetimepicker/configuration/format
     });
-    $('#date').datepicker({
+    $('#expire_date').datepicker({
         uiLibrary: 'bootstrap4',
         format: 'yyyy-mm-dd'
         // https://gijgo.com/datetimepicker/configuration/format

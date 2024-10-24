@@ -78,7 +78,7 @@
                 <hr>
                 <hr>
 
-                @if (auth()->user()->can('employee.menu'))
+                <!-- @if (auth()->user()->can('employee.menu'))
                 <li class="{{ Request::is('employees*') ? 'active' : '' }}">
                     <a href="{{ route('employees.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
@@ -103,7 +103,7 @@
                         <span class="ml-3">Suppliers</span>
                     </a>
                 </li>
-                @endif
+                @endif -->
 
                 <!-- @if (auth()->user()->can('salary.menu'))
                 <li>
@@ -140,7 +140,7 @@
                 </li>
                 @endif -->
 
-                @if (auth()->user()->can('attendence.menu'))
+                <!-- @if (auth()->user()->can('attendence.menu'))
                 <li>
                     <a href="#attendence" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-calendar-days"></i>
@@ -163,7 +163,7 @@
                         </li>
                     </ul>
                 </li>
-                @endif
+                @endif -->
 
                 <hr>
 
@@ -205,7 +205,7 @@
                     </a>
                 </li>
                 @endif
-
+<!-- 
                 @if (auth()->user()->can('database.menu'))
                 <li class="{{ Request::is('database/backup*') ? 'active' : '' }}">
                     <a href="{{ route('backup.index') }}" class="svg-icon">
@@ -213,7 +213,7 @@
                         <span class="ml-3">Backup Database</span>
                     </a>
                 </li>
-                @endif
+                @endif -->
             </ul>
         </nav>
         <div class="p-3"></div>

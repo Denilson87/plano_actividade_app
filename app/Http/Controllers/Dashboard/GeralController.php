@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Exception;
-use Carbon\Carbon; 
+use Carbon\Carbon;
 use App\Models\Activity;
 use App\Models\Product;
 use App\Models\Category;
@@ -19,7 +19,7 @@ use Picqer\Barcode\BarcodeGeneratorHTML;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
-class ActivityController extends Controller
+class GeralController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,9 +37,9 @@ class ActivityController extends Controller
             ->whereYear('date', Carbon::now()->year)   // Filtra pelo ano atual
             ->sortable()
             ->paginate($row)
-            ->appends(request()->query());
+            ->appends(request()->query())
     
-        return view('activities.index', [
+        return view('Geral.index', [
             'activities' => $activities,
         ]);
     }

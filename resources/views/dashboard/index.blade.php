@@ -31,7 +31,7 @@
                                     <img src="../assets/images/product/1.png" class="img-fluid" alt="image">
                                 </div>
                                 <div>
-                                    <p class="mb-2">Actividaes reagendas</p>
+                                    <p class="mb-2">Actividades reagendas</p>
                                     <h4>{{ $total_paid }}</h4>
                                 </div>
                             </div>
