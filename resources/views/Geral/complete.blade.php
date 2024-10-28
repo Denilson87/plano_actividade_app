@@ -22,13 +22,13 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Lista de </h4>
-                    <p class="mb-0">Um painel de actividades permite coletar e visualizar facilmente os dados do produto a partir da otimização <br>
+                    <h4 class="mb-3">Actividades concluidas</h4>
+                    <p class="mb-0">Um painel de actividades permite coletar e visualizar facilmente os dados das actividades a partir da otimização <br>
                     a experiência das actividades, garantindo complitude das actividades.</p>
                 </div>
                 <div>
                 <a href="{{ route('activites.exportData') }}" class="btn btn-warning add-list">Exportar</a>
-                <a href="{{ route('activities.create') }}" class="btn btn-primary add-list">Add Actividades</a>
+                <a href="{{ route('geral-completed') }}" class="btn btn-primary add-list">Add Actividades</a>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Lista de </h4>
+                    <h4 class="mb-3">Lista de actividades</h4>
                     <p class="mb-0">Um painel de actividades permite coletar e visualizar facilmente os dados do produto a partir da otimização <br>
                     a experiência das actividades, garantindo complitude das actividades.</p>
                 </div>
@@ -54,7 +54,7 @@
                             <input type="text" id="search" class="form-control" name="search" placeholder="pesquisar" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
-                                <a href="{{ route('geral.index') }}" class="input-group-text bg-danger">Todas</a>
+                                <a href="{{ route('products.index') }}" class="input-group-text bg-danger">Todas</a>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <th>No.</th>
                             <th>@sortablelink('activity', 'Actividade')</th>
                             <th>@sortablelink('location', 'Local')</th>
-                            <th>@sortablelink('date.name', 'Data de inicio')</th>
+                            <th>@sortablelink('date.name', 'Data de execução')</th>
                             <th>@sortablelink('resourse', 'Recursos necssários')</th>
                             <th>Status</th>
                             <th>Observações</th>

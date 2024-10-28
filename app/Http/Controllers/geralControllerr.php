@@ -19,7 +19,7 @@ use Picqer\Barcode\BarcodeGeneratorHTML;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
-class GeralController extends Controller
+class geralControllerr extends Controller
 {
     /**
      * Display a listing of the resource.

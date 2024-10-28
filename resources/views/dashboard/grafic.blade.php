@@ -32,7 +32,7 @@
                                 </div>
                                 <div>
                                     <p class="mb-2">Actividades reagendas</p>
-                                    <h4>2</h4>
+                                    <h4>{{ $total_paid }}</h4>
                                 </div>
                             </div>
                             <div class="iq-progress-bar mt-2">
@@ -50,8 +50,8 @@
                                     <img src="../assets/images/product/2.png" class="img-fluid" alt="image">
                                 </div>
                                 <div>
-                                    <p class="mb-2">Actividades Penndentes</p>
-                                    <h4>4</h4>
+                                    <p class="mb-2">Actividades concluidas</p>
+                                    <h4>{{ $total_due }}</h4>
                                 </div>
                             </div>
                             <div class="iq-progress-bar mt-2">
@@ -70,7 +70,7 @@
                                 </div>
                                 <div>
                                     <p class="mb-2">Actividades completas</p>
-                                    <h4>6</h4>
+                                    <h4>{{ count($complete_orders) }}</h4>
                                 </div>
                             </div>
                             <div class="iq-progress-bar mt-2">
@@ -82,62 +82,57 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="card card-block card-stretch card-height">
-                <div class="card-header d-flex justify-content-between">
-                    <div class="header-title">
-                        <h4 class="card-title">Visão Geral</h4>
-                    </div>
-                    <div class="card-header-toolbar d-flex align-items-center">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton001"
-                                data-toggle="dropdown">
-                                This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                aria-labelledby="dropdownMenuButton001">
-                                <a class="dropdown-item" href="#">Year</a>
-                                <a class="dropdown-item" href="#">Month</a>
-                                <a class="dropdown-item" href="#">Week</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="layout1-chart1"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card card-block card-stretch card-height">
-                <div class="card-header d-flex align-items-center justify-content-between">
-                    <div class="header-title">
-                        <h4 class="card-title">Nivel Completude</h4>
-                    </div>
-                    <div class="card-header-toolbar d-flex align-items-center">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
-                                data-toggle="dropdown">
-                                This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                aria-labelledby="dropdownMenuButton002">
-                                <a class="dropdown-item" href="#">Yearly</a>
-                                <a class="dropdown-item" href="#">Monthly</a>
-                                <a class="dropdown-item" href="#">Weekly</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="layout1-chart-2" style="min-height: 360px;"></div>
-                </div>
-            </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <div class="col-lg-12">
+            <canvas id="relatorioGrafico" width="400" height="200"></canvas>
         </div>
 
     </div>
-    <!-- Page end  -->
 </div>
+
+<script>
+    // Verifique se $dadosJson está corretamente embutido e convertido
+    let dados = @json($dadosJson);
+
+    // Verifica se os dados são uma string e, se forem, converte para objeto
+    if (typeof dados === 'string') {
+        dados = JSON.parse(dados);  // Converte a string JSON para um objeto JavaScript
+    }
+
+    if (Array.isArray(dados) && dados.length > 0) {
+        // Formatar dados para o gráfico
+        const labels = dados.map(item => item.data); // Eixo X (datas)
+        const valores = dados.map(item => item.total); // Eixo Y (total por data)
+
+        // Gera o gráfico
+        const ctx = document.getElementById('relatorioGrafico').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line', // Tipo do gráfico
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Vendas Totais por Dia',
+                    data: valores,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    } else {
+        console.log('Nenhum dado disponível para o gráfico.');
+    }
+</script>
+
+
 @endsection
 
 @section('specificpagescripts')

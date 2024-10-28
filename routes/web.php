@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\ActivityController;
+use App\Http\Controllers\Dashboard\geralControllerr;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\CategoryController;
@@ -36,12 +37,13 @@ use App\Http\Controllers\Dashboard\UserController;
 
 // DEFAULT DASHBOARD & PROFILE
 Route::middleware('auth')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
+   Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+   //Route::get('/', [DashboardController::class, 'dashboardComGrafico'])->middleware(['auth'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+
 });
 
 // ====== USERS ======
@@ -92,16 +94,16 @@ Route::middleware(['permission:product.menu'])->group(function () {
 // ====== ACTIVITIES ======
 Route::middleware(['permission:product.menu'])->group(function () {
     Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
-    Route::get('/activities/create', [ActivityController::class, 'create'])->name('activities.create');
-    Route::post('/activities/store', [ActivityController::class, 'store'])->name('activities.store');
-    Route::get('/activities/details/{id}', [ActivityController::class, 'show'])->name('activities.show');
-    Route::get('/activities/update/{id}', [ActivityController::class, 'edit'])->name('activities.edit');
-    Route::put('/activities/updated/{id}', [ActivityController::class, 'update'])->name('activities.update');
-    Route::put('/role/{id}', [RoleController::class, 'roleUpdate'])->name('role.update');
-    
-    Route::delete('/activities/delete/{id}', [ActivityController::class, 'destroy'])->name('activities.destroy');
-    Route::get('/activites/export', [ActivityController::class, 'exportData'])->name('activites.exportData');
-    Route::resource('/activites', ActivityController::class);
+    Route::get('/activities-create', [ActivityController::class, 'create'])->name('activities.create');
+    Route::post('/activities-store', [ActivityController::class, 'store'])->name('activities.store');
+    Route::get('/activities-details/{id}', [ActivityController::class, 'show'])->name('activities.show');
+    Route::get('/activities-update/{id}', [ActivityController::class, 'edit'])->name('activities.edit');
+    Route::put('/activities-updated/{id}', [ActivityController::class, 'update'])->name('activities.update');
+    Route::put('/role/{id}', [RoleController::class, 'roleUpdate'])->name('role.update');    
+    Route::delete('/activities-delete/{id}', [ActivityController::class, 'destroy'])->name('activities.destroy');
+    Route::get('/activites-export', [ActivityController::class, 'exportData'])->name('activites.exportData');
+    Route::resource('/activities', ActivityController::class);
+
 });
 
 // ====== CATEGORY PRODUCTS ======
@@ -124,12 +126,14 @@ Route::middleware(['permission:pos.menu'])->group(function () {
 
 // ====== ORDERS ======
 Route::middleware(['permission:orders.menu'])->group(function () {
-    Route::get('/orders/pending', [OrderController::class, 'pendingOrders'])->name('order.pendingOrders');
-    Route::get('/orders/complete', [OrderController::class, 'completeOrders'])->name('order.completeOrders');
-    Route::get('/orders/details/{order_id}', [OrderController::class, 'orderDetails'])->name('order.orderDetails');
-    Route::put('/orders/update/status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
-    Route::get('/orders/invoice/download/{order_id}', [OrderController::class, 'invoiceDownload'])->name('order.invoiceDownload');
-
+    Route::get('/geral', [ActivityController::class, 'index'])->name('geral.index');
+    Route::get('/geral-rescheduled', [ActivityController::class, 'rescheduled'])->name('geral-rescheduled');
+    Route::get('/geral-completed', [ActivityController::class, 'complete'])->name('geral-completed');
+    Route::get('/geral-pending', [ActivityController::class, 'pending'])->name('geral-pending');
+    Route::get('/activites/export', [ActivityController::class, 'exportData'])->name('activites.exportData');
+    Route::resource('/geral', ActivityController::class);
+    
+   
     // Pending Due
     Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
     Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');

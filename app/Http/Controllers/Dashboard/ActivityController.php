@@ -44,7 +44,7 @@ class ActivityController extends Controller
         ]);
     }
 
-    /**
+   /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -127,6 +127,67 @@ class ActivityController extends Controller
     
         return Redirect::route('activities.index')->with('success', 'Activity has been deleted!');
     }
+
+    public function complete()
+    {
+        $row = (int) request('row', 10);
+    
+        if ($row < 1 || $row > 100) {
+            abort(400, 'The per-page parameter must be an integer between 1 and 100.');
+        }
+    
+        $activities = Activity::where('status', 'completo')
+            ->filter(request(['search']))
+            ->sortable()
+            ->paginate($row)
+            ->appends(request()->query());
+    
+        return view('Geral.complete', [
+            'activities' => $activities,
+        ]);
+    }
+    
+
+
+    public function rescheduled()
+    {
+        $row = (int) request('row', 10);
+    
+        if ($row < 1 || $row > 100) {
+            abort(400, 'The per-page parameter must be an integer between 1 and 100.');
+        }
+    
+        $activities = Activity::where('status', 'adiado')
+            ->filter(request(['search']))
+            ->sortable()
+            ->paginate($row)
+            ->appends(request()->query());
+    
+        return view('Geral.adiadas', [
+            'activities' => $activities,
+        ]);
+    }
+    
+
+    public function pending()
+    {
+        $row = (int) request('row', 10);
+    
+        if ($row < 1 || $row > 100) {
+            abort(400, 'The per-page parameter must be an integer between 1 and 100.');
+        }
+    
+        $activities = Activity::where('status', 'pendente')
+            ->filter(request(['search']))
+            ->sortable()
+            ->paginate($row)
+            ->appends(request()->query());
+    
+        return view('Geral.pendentes', [
+            'activities' => $activities,
+        ]);
+    }
+    
 
     /**
      * Show the form for importing a new resource.

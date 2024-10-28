@@ -22,8 +22,8 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Lista de </h4>
-                    <p class="mb-0">Um painel de actividades permite coletar e visualizar facilmente os dados do produto a partir da otimização <br>
+                    <h4 class="mb-3">Actividades pendentes</h4>
+                    <p class="mb-0">Um painel de actividades permite coletar e visualizar facilmente os dados das actividades a partir da otimização <br>
                     a experiência das actividades, garantindo complitude das actividades.</p>
                 </div>
                 <div>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-lg-12">
-            <form action="{{ route('products.index') }}" method="get">
+            <form action="{{ route('geral-pending') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
                         <label for="row" class="col-sm-3 align-self-center">Row:</label>
@@ -54,7 +54,7 @@
                             <input type="text" id="search" class="form-control" name="search" placeholder="pesquisar" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
-                                <a href="{{ route('geral.index') }}" class="input-group-text bg-danger">Todas</a>
+                                <a href="{{ route('geral-pending') }}" class="input-group-text bg-danger">Todas</a>
                             </div>
                         </div>
                     </div>

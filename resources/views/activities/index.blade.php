@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-lg-12">
-            <form action="{{ route('products.index') }}" method="get">
+            <form action="{{ route('activities.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
                         <label for="row" class="col-sm-3 align-self-center">Row:</label>
@@ -54,7 +54,7 @@
                             <input type="text" id="search" class="form-control" name="search" placeholder="pesquisar" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
-                                <a href="{{ route('products.index') }}" class="input-group-text bg-danger">Todas</a>
+                                <a href="{{ route('activities.index') }}" class="input-group-text bg-danger">Todas</a>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <th>No.</th>
                             <th>@sortablelink('activity', 'Actividade')</th>
                             <th>@sortablelink('location', 'Local')</th>
-                            <th>@sortablelink('date.name', 'Data de inicio')</th>
+                            <th>@sortablelink('date.name', 'Data de execução')</th>
                             <th>@sortablelink('resourse', 'Recursos necssários')</th>
                             <th>Status</th>
                             <th>Observações</th>
