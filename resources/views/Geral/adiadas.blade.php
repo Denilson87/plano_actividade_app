@@ -70,7 +70,7 @@
                             <th>No.</th>
                             <th>@sortablelink('activity', 'Actividade')</th>
                             <th>@sortablelink('location', 'Local')</th>
-                            <th>@sortablelink('date.name', 'Data de inicio')</th>
+                            <th>@sortablelink('date', 'Data de inicio')</th>
                             <th>@sortablelink('resourse', 'Recursos necssários')</th>
                             <th>Status</th>
                             <th>Observações</th>

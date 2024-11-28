@@ -14,12 +14,12 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Advance Salary List</h4>
-                    <p class="mb-0">A advance salary dashboard lets you easily gather and visualize advance salary data from optimizing <br>
-                        the advance salary experience, ensuring advance salary retention. </p>
+                    <h4 class="mb-3">Visitas de Supervisões</h4>
+                    <p class="mb-0">O painel de supervisão permite reunir e visualizar facilmente o avanço dos supervisões e otimizando <br>
+                    A experiência de supervisão, garantindo a retenção de supervisão do das actividades de supervisão. </p>
                 </div>
                 <div>
-                <a href="{{ route('advance-salary.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i></i>Create Advance Salary</a>
+                <a href="{{ route('advance-salary.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i></i>+ Novo</a>
                 <a href="{{ route('advance-salary.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
                 </div>
             </div>
@@ -41,12 +41,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3 align-self-center" for="search">Search:</label>
+                        <label class="control-label col-sm-3 align-self-center" for="search">Pesquisar:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <input type="text" id="search" class="form-control" name="search" placeholder="Search employee" value="{{ request('search') }}">
                                 <div class="input-group-append">
-                                    <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
+                                    <button type="submit" class="input-group-text bg-primary">pesquisar</button>
                                 </div>
                             </div>
                         </div>
@@ -93,10 +93,9 @@
                                 </form>
                             </td>
                         </tr>
-
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
+                            <div class="iq-alert-text">Sem registos.</div>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="ri-close-line"></i>
                             </button>

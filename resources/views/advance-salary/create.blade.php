@@ -31,49 +31,88 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Create Advance Salary</h4>
+                        <h4 class="card-title">Nova supervisão</h4>
+                    </div>
+                    <div class="header-title">
+                    <a href="{{ route('products.exportData') }}" class="btn btn-infor add-list"><b>Importar do Excel</b></a>
                     </div>
                 </div>
 
+                <div class="card-header d-flex justify-content-between">
+                  
+                </div>
                 <div class="card-body">
                     <form action="{{ route('advance-salary.store') }}" method="POST">
                     @csrf
                         <!-- begin: Input Data -->
                         <div class=" row align-items-center">
-                            <div class="form-group col-md-12">
-                                <label for="employee_id">Employee Name <span class="text-danger">*</span></label>
+                            <div class="form-group col-md-8">
+                                <label for="employee_id">Divulgacão do Desempenho das Unidades Sanitárias<span class="text-danger">*</span></label>
                                 <select class="form-control mb-3" id="employee_id" name="employee_id" required>
-                                    <option selected="" disabled>-- Select Employee --</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" {{ old('employee_id') == $employee->id ? 'selected' : '' }}>
-                                            {{ $employee->name }}
-                                        </option>
-                                    @endforeach
+                                    <option value="AQD (POP Interno)">AQD (POP Interno)</option>
+                                    <option value="AQD (POP MISAU/PEPFAR)">AQD (POP MISAU/PEPFAR)</option>
+                                    <option value="Avaliações de Qualidade de implementação dos instrumentos">Avaliações de Qualidade de implementação dos instrumentos</option>
+                                    <option value="Desempenho dos indicadores programáticos">Desempenho dos indicadores programáticos</option>
+                                    <option value="Planos de acção (Se aplicável)">Planos de acção (Se aplicável)</option>
+                                
                                 </select>
-                                @error('employee_id')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                </div>                                
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="datepicker">Date <span class="text-danger">*</span></label>
-                                <input id="datepicker" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" />
-                                @error('date')
+                            <div class="form-group col-md-4">
+                                <label for="employee_id">Resposta<span class="text-danger">*</span></label>
+                                <select class="form-control mb-3" id="employee_id" name="employee_id" required>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                    <option value="N/A">N/A</option>                               
+                                </select>
                                 <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                </div>                                
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="advance_salary">Advance Salary</label>
-                                <input type="text" class="form-control @error('advance_salary') is-invalid @enderror" id="advance_salary" name="advance_salary" value="{{ old('advance_salary') }}">
-                                @error('advance_salary')
+                             <div class="form-group col-md-8">
+                                <label for="employee_id">Partilha de Listas com as áreas programáticas<span class="text-danger">*</span></label>
+                                <select class="form-control mb-3" id="employee_id" name="employee_id" required>
+                                    <option value="Listas de retencão precoce (do último mês)">Listas de retencão precoce (do último mês)</option>
+                                    <option value="Listas de pacientes marcados para consulta (do último mês)">Listas de pacientes marcados para consulta (do último mês)</option>
+                                    <option value="Lista de Pacientes possible LTFU (do último mês)">Lista de Pacientes possible LTFU (do último mês)</option>
+                                    <option value="Lista de Pacientes para término de TPT">Lista de Pacientes para término de TPT</option>
+                                    <option value="Lista de pacientes com rastreio positivo para TB">Lista de pacientes com rastreio positivo para TB</option>                                
+                                </select>
                                 <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                </div>                                
                             </div>
+                            <div class="form-group col-md-4">
+                                <label for="employee_id"> Resposta<span class="text-danger">*</span></label>
+                                <select class="form-control mb-3" id="employee_id" name="employee_id" required>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                    <option value="N/A">N/A</option>                               
+                                </select>
+                                <div class="invalid-feedback">
+                                </div>                                
+                            </div>   
+                            <div class="form-group col-md-8">
+                                <label for="employee_id">Partilha de Listas com as áreas programáticas<span class="text-danger">*</span></label>
+                                <select class="form-control mb-3" id="employee_id" name="employee_id" required>
+                                    <option value="Listas de retencão precoce (do último mês)">Listas de retencão precoce (do último mês)</option>
+                                    <option value="Listas de pacientes marcados para consulta (do último mês)">Listas de pacientes marcados para consulta (do último mês)</option>
+                                    <option value="Lista de Pacientes possible LTFU (do último mês)">Lista de Pacientes possible LTFU (do último mês)</option>
+                                    <option value="Lista de Pacientes para término de TPT">Lista de Pacientes para término de TPT</option>
+                                    <option value="Lista de pacientes com rastreio positivo para TB">Lista de pacientes com rastreio positivo para TB</option>                                
+                                </select>
+                                <div class="invalid-feedback">
+                                </div>                                
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="employee_id">Resposta<span class="text-danger">*</span></label>
+                                <select class="form-control mb-3" id="employee_id" name="employee_id" required>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                    <option value="N/A">N/A</option>                               
+                                </select>
+                                <div class="invalid-feedback">
+                                </div>                                
+                            </div>                        
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">

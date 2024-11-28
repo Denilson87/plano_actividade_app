@@ -81,6 +81,8 @@
     <option selected="pendente" >pendente</option>status
     <option value="adiado" >Adiado</option>
     <option value="completo" >Conpleto</option>
+    <option value="cancelado" >cancelado</option>
+
 </select>
 @error('category_id')
 <div class="invalid-feedback">

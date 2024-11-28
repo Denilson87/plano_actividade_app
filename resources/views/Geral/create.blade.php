@@ -61,6 +61,10 @@
                                 </div>
                                 @enderror
                             </div>
+
+
+                            
+
                             <div class="form-group col-md-6">
                                 <label for="resourse"><b>Recurcos necessários</b> <span class="text-danger">*</span></label>
                                 <input id="resourse" class="form-control @error('resourse') is-invalid @enderror" placeholder="Descreva os recursos necessários para a actividade" name="resourse" value="{{ old('resourse') }}" required/>
@@ -85,7 +89,7 @@
 @enderror
 </div>
 
-<div class="form-group col-md-6">
+                             <div class="form-group col-md-6">
                                 <label for="obs"><b>Observações</b> <span class="text-danger">*</span></label>
                                 <input id="obs" class="form-control @error('obs') is-invalid @enderror" name="obs" value="sem notas..." required/>
                                 @error('resourse')
@@ -94,7 +98,18 @@
                                 </div>
                                 @enderror
                             </div>
-                        </div>
+                            <div class="form-group col-md-6">
+                                <label for="obs"><b>Observações</b> <span class="text-danger">*</span></label>
+                                <input id="obs" class="form-control @error('obs') is-invalid @enderror" name="obs" value="sem notas..." required/>
+                                @error('resourse')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                             </div>
+
+
                         <!-- end: Input Data -->
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary mr-2">Save</button>
@@ -120,6 +135,14 @@
         // https://gijgo.com/datetimepicker/configuration/format
     });
 </script>
+
+<!-- <option value="" disabled selected>Selecione uma tag</option>
+                                <option value="" disabled selected>Kampfumo</option>
+                                    <option value="CS Alto Mae">CS Alto Mae</option>
+                                    <option value="CS Malhangalene">CS Malhangalene</option>
+                                    <option value="CS Polana cimento">CS Polana cimento</option>
+                                    <option value="CS Polana cimento">CS Porto</option>
+                                    <option value="CS Polana cimento">CS Maxaquene</option> -->
 
 @include('components.preview-img-form')
 @endsection

@@ -14,9 +14,9 @@
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Employee List</h4>
-                    <p class="mb-0">A employee dashboard lets you easily gather and visualize employee data from optimizing <br>
-                        the employee experience, ensuring employee retention. </p>
+                    <h4 class="mb-3">Visitas de Supervisão</h4>
+                    <p class="mb-0">Um painel de supervisão permite recolher e visualizar facilmente os dados dos colaboradores desde a otimização
+                   <br> a experiência do colaborador, garantindo a retenção dos colaboradores.  </p>
                 </div>
                 <div>
                 <a href="{{ route('employees.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>Add Employee</a>

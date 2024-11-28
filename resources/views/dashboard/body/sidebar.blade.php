@@ -2,7 +2,7 @@
 <div class="iq-sidebar sidebar-default ">
     <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
         <a href="{{ route('dashboard') }}" class="header-logo">
-            <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">PMA CCS</h5>
+            <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">ERP CCS</h5>
         </a>
         <div class="iq-menu-bt-sidebar ml-0">
             <i class="las la-bars wrapper-menu"></i>
@@ -74,19 +74,15 @@
                     </ul>
                 </li>
                 @endif
-
-                <hr>
-                <hr>
-
-                <!-- @if (auth()->user()->can('employee.menu'))
+                 <!-- @if (auth()->user()->can('employee.menu'))
                 <li class="{{ Request::is('employees*') ? 'active' : '' }}">
                     <a href="{{ route('employees.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Employees</span>
+                        <span class="ml-3"><b>Supervisão</b></span>
                     </a>
                 </li>
-                @endif
-
+                @endif -->
+<!--
                 @if (auth()->user()->can('customer.menu'))
                 <li class="{{ Request::is('customers*') ? 'active' : '' }}">
                     <a href="{{ route('customers.index') }}" class="svg-icon">
@@ -104,12 +100,11 @@
                     </a>
                 </li>
                 @endif -->
-
-                <!-- @if (auth()->user()->can('salary.menu'))
+                 @if (auth()->user()->can('salary.menu'))
                 <li>
                     <a href="#advance-salary" class="collapsed" data-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-cash-register"></i>
-                        <span class="ml-3">Salary</span>
+                        <span class="ml-3"><b>Supervisão</b></span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -118,27 +113,22 @@
 
                         <li class="{{ Request::is(['advance-salary', 'advance-salary/*/edit']) ? 'active' : '' }}">
                             <a href="{{ route('advance-salary.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>All Advance Salary</span>
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Lista de supervisão</b></span>
                             </a>
                         </li>
                         <li class="{{ Request::is('advance-salary/create*') ? 'active' : '' }}">
                             <a href="{{ route('advance-salary.create') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Create Advance Salary</span>
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Criar / importar</b> </span>
                             </a>
                         </li>
                         <li class="{{ Request::is('pay-salary') ? 'active' : '' }}">
                             <a href="{{ route('pay-salary.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Pay Salary</span>
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Supervisão pendente</b></span>
                             </a>
-                        </li>
-                        <li class="{{ Request::is('pay-salary/history*') ? 'active' : '' }}">
-                            <a href="{{ route('pay-salary.payHistory') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>History Pay Salary</span>
-                            </a>
-                        </li>
+                        </li>                      
                     </ul>
                 </li>
-                @endif -->
+                @endif
 
                 <!-- @if (auth()->user()->can('attendence.menu'))
                 <li>
@@ -166,8 +156,6 @@
                 @endif -->
 
                 <hr>
-
-
                 @if (auth()->user()->can('roles.menu'))
                 <li>
                     <a href="#permission" class="collapsed" data-toggle="collapse" aria-expanded="false">
