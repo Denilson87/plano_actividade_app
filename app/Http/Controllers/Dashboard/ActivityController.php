@@ -25,23 +25,25 @@ class ActivityController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $row = (int) request('row', 10);
-
-    if ($row < 1 || $row > 100) {
-        abort(400, 'The per-page parameter must be an integer between 1 and 100.');
+    {
+        $row = (int) request('row', 10);
+    
+        if ($row < 1 || $row > 100) {
+            abort(400, 'The per-page parameter must be an integer between 1 and 100.');
+        }
+    
+        $activities = Activity::filter(request(['search']))
+            ->whereBetween('created_at', [Carbon::now()->subDays(60), Carbon::now()]) // Filtra últimos 60 dias
+            ->orderBy('created_at', 'desc') // Ordena por created_at em ordem decrescente
+            ->sortable()
+            ->paginate($row)
+            ->appends(request()->query());
+    
+        return view('activities.index', [
+            'activities' => $activities,
+        ]);
     }
-
-    $activities = Activity::filter(request(['search']))
-        ->whereBetween('created_at', [Carbon::now()->subDays(60), Carbon::now()]) // Filtra últimos 60 dias
-        ->sortable()
-        ->paginate($row)
-        ->appends(request()->query());
-
-    return view('activities.index', [
-        'activities' => $activities,
-    ]);
-}
+    
 
 
    /**
@@ -72,7 +74,7 @@ class ActivityController extends Controller
 
         Activity::create($validatedData);
 
-        return Redirect::route('activities.index')->with('success', 'Activity plan been created!');
+        return Redirect::route('activities.create')->with('success', 'Activity plan been created!');
     }
 
     /**
@@ -138,6 +140,7 @@ class ActivityController extends Controller
     
         $activities = Activity::where('status', 'completo')
             ->filter(request(['search']))
+            ->orderBy('created_at', 'desc') // Ordena por created_at em ordem decrescente
             ->sortable()
             ->paginate($row)
             ->appends(request()->query());
@@ -159,6 +162,7 @@ class ActivityController extends Controller
     
         $activities = Activity::where('status', 'adiado')
             ->filter(request(['search']))
+            ->orderBy('created_at', 'desc') // Ordena por created_at em ordem decrescente
             ->sortable()
             ->paginate($row)
             ->appends(request()->query());
@@ -179,6 +183,7 @@ class ActivityController extends Controller
     
         $activities = Activity::where('status', 'pendente')
             ->filter(request(['search']))
+            ->orderBy('created_at', 'desc') // Ordena por created_at em ordem decrescente
             ->sortable()
             ->paginate($row)
             ->appends(request()->query());
