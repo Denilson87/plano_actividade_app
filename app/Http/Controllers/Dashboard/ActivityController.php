@@ -59,22 +59,26 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
+        // Validação dos dados
         $rules = [
-           
             'activity' => 'string|nullable',
             'location' => 'required|string',
-            'date'=> 'date_format:Y-m-d|max:20|nullable',
+            'date' => 'date_format:Y-m-d|max:20|nullable',
             'resourse' => 'string|nullable',
             'status' => 'string|nullable',
             'obs' => 'string|nullable',
-            
         ];
-
+    
         $validatedData = $request->validate($rules);
-
+    
+        // Adicionar o valor do email do usuário como "employee"
+        $validatedData['employee'] = auth()->user()->email;
+    
+        // Criar o registro na tabela Activity
         Activity::create($validatedData);
-
-        return Redirect::route('activities.create')->with('success', 'Activity plan been created!');
+    
+        // Redirecionar com mensagem de sucesso
+        return Redirect::route('activities.create')->with('success', 'Activity plan has been created!');
     }
 
     /**

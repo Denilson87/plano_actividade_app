@@ -54,7 +54,7 @@
                             <input type="text" id="search" class="form-control" name="search" placeholder="pesquisar" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
-                                <a href="{{ route('products.index') }}" class="input-group-text bg-danger">Todas</a>
+                                <a href="{{ route('geral-completed') }}" class="input-group-text bg-danger">Todas</a>
                             </div>
                         </div>
                     </div>

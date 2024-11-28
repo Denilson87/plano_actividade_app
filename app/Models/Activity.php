@@ -16,6 +16,7 @@ class Activity extends Model
         'activity',
         'location',
         'date',
+        'employee',
         'resourse',
         'status',
         'obs',

@@ -108,11 +108,11 @@
         // Gera o gráfico
         const ctx = document.getElementById('relatorioGrafico').getContext('2d');
         const myChart = new Chart(ctx, {
-            type: 'line', // Tipo do gráfico
+            type: 'bar', // Tipo do gráfico
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Vendas Totais por Dia',
+                    label: 'Resumo das ctividades ',
                     data: valores,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
