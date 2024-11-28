@@ -25,24 +25,24 @@ class ActivityController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $row = (int) request('row', 10);
-    
-        if ($row < 1 || $row > 100) {
-            abort(400, 'The per-page parameter must be an integer between 1 and 100.');
-        }
-    
-        $activities = Activity::filter(request(['search']))
-            ->whereMonth('date', Carbon::now()->month) // Filtra pelo mês atual
-            ->whereYear('date', Carbon::now()->year)   // Filtra pelo ano atual
-            ->sortable()
-            ->paginate($row)
-            ->appends(request()->query());
-    
-        return view('activities.index', [
-            'activities' => $activities,
-        ]);
+{
+    $row = (int) request('row', 10);
+
+    if ($row < 1 || $row > 100) {
+        abort(400, 'The per-page parameter must be an integer between 1 and 100.');
     }
+
+    $activities = Activity::filter(request(['search']))
+        ->whereBetween('created_at', [Carbon::now()->subDays(60), Carbon::now()]) // Filtra últimos 60 dias
+        ->sortable()
+        ->paginate($row)
+        ->appends(request()->query());
+
+    return view('activities.index', [
+        'activities' => $activities,
+    ]);
+}
+
 
    /**
      * Show the form for creating a new resource.
