@@ -61,6 +61,7 @@
                             <th>No.</th>
                             <th>Avatar</th>
                             <th>@sortablelink('Nome')</th>
+                            <th>Sector</th>
                             <th>@sortablelink('username')</th>
                             <th>@sortablelink('email')</th>
                             <th>Função</th>
@@ -75,6 +76,7 @@
                                 <img class="avatar-60 rounded" src="{{ $item->photo ? asset('storage/profile/'.$item->photo) : asset('assets/images/user/1.png') }}">
                             </td>
                             <td>{{ $item->name }}</td>
+                            <td><span class="badge bg-success">{{ $item->sector }}</span></td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
                             <td>

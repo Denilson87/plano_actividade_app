@@ -20,9 +20,7 @@
                 <div class="card-body">
                     <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                        <!-- begin: Input Image -->                    
-                        <!-- end: Input Image -->
-                        <!-- begin: Input Data -->
+                       
                         <div class="form-group row align-items-center">
                             <div class="col-md-12">
                                 <div class="profile-img-edit">
@@ -61,10 +59,6 @@
                                 </div>
                                 @enderror
                             </div>
-
-
-                            
-
                             <div class="form-group col-md-6">
                                 <label for="resourse"><b>Recurcos necessários</b> <span class="text-danger">*</span></label>
                                 <input id="resourse" class="form-control @error('resourse') is-invalid @enderror" placeholder="Descreva os recursos necessários para a actividade" name="resourse" value="{{ old('resourse') }}" required/>
@@ -113,7 +107,7 @@
                         <!-- end: Input Data -->
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('products.index') }}">Cancel</a>
+                            <a class="btn bg-danger" href="#">Cancel</a>
                         </div>
                     </form>
                 </div>

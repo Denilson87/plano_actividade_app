@@ -16,7 +16,8 @@
         <div class="col-lg-4">
             <div class="card card-transparent card-block card-stretch card-height border-none">
                 <div class="card-body p-0 mt-lg-2 mt-0">
-                    <h3 class="mb-3">Olá {{ auth()->user()->name }}</h3>
+                    <h3 class="mb-3"><span class="mr-1"> <a href="{{ route('dashboard') }}" class="">ERP CCS</a>.
+                    Olá {{ auth()->user()->name }}</h3></span>
                     <p class="mb-0 mr-4">Este dashboard mostrando processos e uma visão geral e completudo das actividades</p>
                 </div>
             </div>

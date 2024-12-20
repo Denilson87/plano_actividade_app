@@ -17,7 +17,7 @@
                 <div class="d-flex align-items-center auth-content">
                     <div class="col-lg-7 align-self-center">
                         <div class="p-3">
-                            <h2 class="mb-2">Plano Mensal de Actividades (PMA)</h2>
+                            <h2 class="mb-2">Enterprise resource planning (ERP) CCS</h2>
                             <p>Login</p>
                             <form action="{{ route('login') }}" method="POST">
                                 @csrf
@@ -46,7 +46,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <p>
-                                            Não tem conta? <a href="{{ route('register') }}" class="text-primary">Registar</a>
+                                            Não tem conta? <a href="" class="text-primary">Registar</a>
+                                            <!-- Não tem conta? <a href="{{ route('register') }}" class="text-primary">Registar</a> -->
+
                                         </p>
                                     </div>
                                     <div class="col-lg-6">

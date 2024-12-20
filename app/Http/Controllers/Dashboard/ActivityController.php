@@ -73,12 +73,13 @@ class ActivityController extends Controller
     
         // Adicionar o valor do email do usuário como "employee"
         $validatedData['employee'] = auth()->user()->email;
+        $validatedData['sector'] = auth()->user()->sector;
     
         // Criar o registro na tabela Activity
         Activity::create($validatedData);
     
         // Redirecionar com mensagem de sucesso
-        return Redirect::route('activities.create')->with('success', 'Activity plan has been created!');
+        return Redirect::route('dashboard')->with('success', 'Activity plan has been created!');
     }
 
     /**
@@ -116,9 +117,10 @@ class ActivityController extends Controller
             'status' => 'string|nullable',
             'obs' => 'string|nullable',
             ];
-
+            
         $validatedData = $request->validate($rules);
-
+        $validatedData['employee'] = auth()->user()->email;
+        $validatedData['sector'] = auth()->user()->sector;
         Activity::where('id', $id)->update($validatedData);        
 
         return Redirect::route('activities.index')->with('success', 'Activity has been updated!');
@@ -277,6 +279,8 @@ class ActivityController extends Controller
         $activities = Activity::all()->sortByDesc('id');
 
         $activity_array [] = array(
+            'sector',
+            'employee',
             'activity',
             'location',
             'date',
@@ -288,6 +292,8 @@ class ActivityController extends Controller
         foreach($activities as $activity)
         {
             $activity_array[] = array(
+                'sector'=>$activity->sector,
+                'employee'=>$activity->employee,
                 'activity' => $activity->activity,
                 'location'=>$activity->location,
                 'date'=>$activity->date,

@@ -90,6 +90,28 @@
                             </div>
 
                             <div class="form-group col-md-6">
+                                <label for="sector"><b>Area</b> <span class="text-danger">*</span></label>
+                                <select class="form-control" name="sector" required>
+                                    <option selected value="M&A">M&A</option>
+                                    <option value="SMI">SMI</option>
+                                    <option value="ATS">ATS</option>
+                                    <option value="C&T">C&T</option>
+                                    <option value="EC">EC</option>
+                                    <option value="TB">TB</option>
+                                    <option value="Logistica">Logistica</option>
+                                    <option value="Administração">Administração</option>
+                                    <option value="Contabilidade">Contabilidade</option>
+                                    <option value="RH">RH</option>
+                                </select>
+                                @error('sector')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+
+                            <div class="form-group col-md-6">
                                 <label for="role">Role</label>
                                 <select class="form-control @error('role') is-invalid @enderror" name="role">
                                     <option selected="" disabled>-- Select Role --</option>

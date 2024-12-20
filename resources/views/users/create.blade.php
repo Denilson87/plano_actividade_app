@@ -43,7 +43,7 @@
                         <div class=" row align-items-center">
                             <div class="form-group col-md-12">
                                 <label for="name">Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nome do colabordor" value="{{ old('name') }}" required>
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="username">Username <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" required>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="usuario do colabordor" id="username" name="username" value="{{ old('username') }}" required>
                                 @error('username')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -61,7 +61,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="email">Email <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="email colabordor"name="email" value="{{ old('email') }}" required>
                                 @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -71,7 +71,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="password">Password <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required  autocomplete="off">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password" id="password" name="password" required  autocomplete="off">
                                 @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -80,8 +80,28 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="password_confirmation">Confirm Password <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" required>
+                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="confirme a password" id="password_confirmation" name="password_confirmation" required>
                                 @error('password_confirmation')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="sector"><b>Area</b> <span class="text-danger">*</span></label>
+                                <select class="form-control" name="sector" required>
+                                    <option selected value="M&A">M&A</option>
+                                    <option value="SMI">SMI</option>
+                                    <option value="ATS">ATS</option>
+                                    <option value="C&T">C&T</option>
+                                    <option value="EC">EC</option>
+                                    <option value="TB">TB</option>
+                                    <option value="Logistica">Logistica</option>
+                                    <option value="Administração">Administração</option>
+                                    <option value="Contabilidade">Contabilidade</option>
+                                    <option value="RH">RH</option>
+                                </select>
+                                @error('sector')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

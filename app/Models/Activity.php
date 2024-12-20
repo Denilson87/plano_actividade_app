@@ -19,6 +19,7 @@ class Activity extends Model
         'employee',
         'resourse',
         'status',
+        'sector',
         'obs',
     ];
 
