@@ -87,15 +87,15 @@
                             </td>
                             <td>{{ $activity->resourse }}</td>
                             <td>
-    @if ($activity->status === 'pendente')
-        <span class="badge rounded-pill bg-warning">pendente</span>
-    @elseif ($activity->status === 'completo')
-        <span class="badge rounded-pill bg-success">conpleto</span>
-    @elseif ($activity->status === 'adiado')
-        <span class="badge rounded-pill bg-danger">adiado</span>
-    @endif   
-</td>  
-<td>{{ $activity->obs }}</td>                            
+                             @if ($activity->status === 'pendente')
+                             <span class="badge rounded-pill bg-warning">pendente</span>
+                             @elseif ($activity->status === 'completo')
+                            <span class="badge rounded-pill bg-success">conpleto</span>
+                             @elseif ($activity->status === 'adiado')
+                            <span class="badge rounded-pill bg-danger">adiado</span>
+                              @endif   
+                             </td>  
+                            <td>{{ $activity->obs }}</td>                            
                             <td>
                                 <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" style="margin-bottom: 5px"> 
                                 @method('delete')

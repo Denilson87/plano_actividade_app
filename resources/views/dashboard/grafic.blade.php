@@ -207,74 +207,10 @@
                         <!-- end: Input Data -->
                         <div class="mt-2">
                             <button type="submit" class="btn btn-primary mr-2">Salvar</button>
-                            <a class="btn bg-danger" href="{{ route('products.index') }}">Cancelar</a>
+                            <a class="btn bg-danger" href="">Cancelar</a>
                         </div>
                     </form>
-</div>
-
-
-                <!-- <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data"  >
-                    <div class="modal-body">
-                        <div class="alert alert-danger " role="alert" id="danger-alert" style="display: none;">
-                            End date should be greater than start date.
-                          </div>
-                        <div class="form-group">
-                            <label for="activity"><b>Actividade</b> <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Descreva a actividade" id="activity" name="activity" value="{{ old('activity') }}" required>
-                        </div>
-                        <div class="form-group">
-                        <div class="form-group col-md-12">
-                                <label for="tag"><b>Local da actividade</b> <span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="location" id="location" required>
-                                    <option value="" disabled selected>Selecione o local</option>
-                                    <option value="CS Escritório HO">Escritório HO</option>
-                                    <option value="CS Escritório MC">Escritório MC</option>
-                                    <option value="Kampfumo" disabled >Kampfumo</option>
-                                    <option value="CS Alto Mae">CS Alto Mae</option>
-                                    <option value="CS Malhangalene">CS Malhangalene</option>
-                                    <option value="CS Polana cimento">CS Polana cimento</option>
-                                    <option value="CS Porto">CS Porto</option>
-                                    <option value="Kamavota" disabled >Kamavota</option>
-                                    <option value="CS Albasine">CS Albasine</option>
-                                    <option value="CS Hulene">CS Hulene</option>
-                                    <option value="CS Romão">CS Romão</option>
-                                    <option value="CS Mavalane">CS Mavalane</option>
-                                    <option value="CS Pescadores">CS Pescadores</option>
-                                    <option value="Chamanculo" disabled >Chamanculo</option>
-                                    <option value="CS Xipamanine">CS Xipamanine</option>
-                                    <option value="CS Chamanculo">CS Chamanculo</option>
-                                    <option value="CS Jose Macamo">CS Jose Macamo</option>
-                                    <option value="Kamaxaquene" disabled >Kambukwane</option>
-                                    <option value="CS Bagamoio">CS Bagamoio</option>
-                                    <option value="CS Inhagoia">CS Inhagoia</option>
-                                    <option value="CS Magoanine A">CS Magoanine A</option>
-                                    <option value="CS Magoanine Tendas">CS Magoanine Tendas</option>
-                                    <option value="CS Zimpeto">CS Zimpeto</option>
-                                  </select>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="start-date">Data de execução <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="start-date" placeholder="start-date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="end-date">End date - <small class="text-muted">Optional</small></label>
-                            <input type="date" class="form-control" id="end-date" placeholder="end-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="end-date">Recursos necessários<small class="text-muted"> Optional</small></label>
-                            <input id="resourse" class="form-control @error('resourse') is-invalid @enderror" placeholder="Descreva os recursos necessários para a actividade" name="resourse" value="{{ old('resourse') }}" required/>
-                            </div>
-                        <div class="form-group">
-                            <label for="event-color">Color</label>
-                            <input type="color" class="form-control" id="event-color" value="#3788d8">
-                          </div> -->
-                    <!-- </div>
-                    <div class="modal-footer border-top-0 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success" id="submit-button">Submit</button>
-                      </div>
-                </form> -->
+                  </div>
             </div>
         </div>
     </div>
@@ -305,7 +241,131 @@
 
     </div>
 </div>
+<div class="list" style="margin: 20px;">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            @if (session()->has('success'))
+                <div class="alert text-white bg-success" role="alert">
+                    <div class="iq-alert-text">{{ session('success') }}</div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert text-white bg-danger" role="alert">
+                    <div class="iq-alert-text">{{ session('success') }}</div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            @endif
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                <div>
+                    <h4 class="mb-3">Minhas actividades</h4>
+                    <p class="mb-0">Previsualização da minha Planificação.</p>
+                </div>
+                <div>
+                
+                </div>
+            </div>
+        </div>
 
+        <div class="col-lg-12">
+            <form action="{{ route('activities.index') }}" method="get">
+                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="form-group row">
+                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="row">
+                                <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
+                                <option value="25" @if(request('row') == '25')selected="selected"@endif>25</option>
+                                <option value="50" @if(request('row') == '50')selected="selected"@endif>50</option>
+                                <option value="100" @if(request('row') == '100')selected="selected"@endif>100</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3 align-self-center" for="search">Pesquisar:</label>
+                        <div class="input-group col-sm-8">
+                            <input type="text" id="search" class="form-control" name="search" placeholder="pesquisar" value="{{ request('search') }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="input-group-text bg-primary">Pesquisar</button>
+                                <a href="{{ route('activities.index') }}" class="input-group-text bg-danger">Todas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-12">
+    <div class="table-responsive rounded mb-3">
+        <table class="table mb-0" style="margin-top:3px;">
+            <thead class="bg-white text-uppercase">
+                <tr class="ligth ligth-data">
+                    <th>No.</th>
+                    <th>@sortablelink('activity', 'Actividade')</th>
+                    <th>@sortablelink('location', 'Local')</th>
+                    <th>Data de execução</th>
+                    <th>@sortablelink('resourse', 'Recursos necessários')</th>
+                   
+                    <th>Observações</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody class="ligth-body">
+                @forelse ($activities as $activity)
+                    <tr>
+                        <td>{{ (($activities->currentPage() - 1) * $activities->perPage()) + $loop->iteration }}</td>
+                        <td>{{ $activity->activity }}</td>
+                        <td>{{ $activity->location }}</td>
+                        <td><span class="badge rounded-pill bg-success">{{ $activity->date }}</span></td>
+                        <td>{{ $activity->resourse }}</td>
+                       
+                        <td>{{ $activity->obs }}</td>
+                        <td>
+                            <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" style="margin-bottom: 5px">
+                                @method('DELETE')
+                                @csrf
+                                <div class="d-flex align-items-center list-action">
+                                    <a class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top" title="View"
+                                       href="">
+                                        <i class="ri-eye-line mr-0"></i>
+                                    </a>
+                                    <a class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="Edit"
+                                       href="{{ route('activities.edit', $activity->id) }}">
+                                        <i class="ri-pencil-line mr-0"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-warning mr-2 border-none"
+                                            onclick="return confirm('Are you sure you want to delete this record?')"
+                                            data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="ri-delete-bin-line mr-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="8" class="text-center text-danger">
+                            Sem Actividades este Mês
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+    <!-- Paginação -->
+    {{ $activities->links() }}
+</div>
+
+    </div>
+    <!-- Page end  -->
+</div>
+</div>
 <script>
     // Verifique se $dadosJson está corretamente embutido e convertido
     let dados = @json($dadosJson);

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Order;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon; 
 use App\Models\Activity;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,20 +25,31 @@ class DashboardController extends Controller
         ]);
     }
     
+    public function edit($id)
+    {
+        $activity = Activity::findOrFail($id);
+        return view('activities.edit', compact('activity'));
+    }
+
+    public function destroy($id)
+    {
+        $activity = Activity::findOrFail($id);
+        $activity->delete();
+    
+        return redirect()->route('dashboard.activities.index')
+                         ->with('success', 'Atividade removida com sucesso.');
+    }
 
     public function dashboardComGrafico()
     {
         $userEmail = Auth::user()->email; // Obtém o e-mail do usuário logado
     
-        // Filtra e agrupa as atividades por data
-        $activities = Activity::selectRaw('DATE(created_at) as data, SUM(id) as total')
+        // Filtra e agrupa as atividades por data com paginação
+        $activities = Activity::selectRaw('DATE(created_at) as data, COUNT(id) as total')
             ->where('employee', $userEmail)
             ->groupBy('data')
             ->orderBy('data', 'ASC')
-            ->get();
-    
-        // Formata os dados em JSON
-        $dadosJson = $activities->toJson();
+            ->paginate(10); // Paginação para o gráfico
     
         // Contagem das atividades por status para o usuário logado
         $completeActivity = Activity::where('employee', $userEmail)
@@ -51,22 +64,39 @@ class DashboardController extends Controller
             ->where('status', 'adiado')
             ->count();
     
-        // Dados gerais para o dashboard
-        $totalPaid = Order::sum('pay');
-        $totalDue = Order::sum('due');
+        // Número de itens por página para a tabela de atividades
+        $row = 6; // Pode ser ajustado conforme necessário
+    
+        // Atividades filtradas e paginadas para exibição na tabela
+        $filteredActivities = Activity::where('employee', $userEmail) // Adiciona filtro pelo funcionário logado
+            ->filter(request(['search'])) // Verifica se há uma busca
+            ->orderBy('created_at', 'desc') // Ordena por data de criação em ordem decrescente
+            ->sortable() // Permite ordenação (se estiver usando o pacote sortable)
+            ->paginate($row)
+            ->appends(request()->query()); // Mantém os parâmetros na paginação
+    
+        // Formatação dos dados para o gráfico (JSON)
+        $dadosJson = $activities->map(function ($activity) {
+            return [
+                'data' => $activity->data,
+                'total' => $activity->total,
+            ];
+        });
     
         // Retorna a view combinada (gráfico e dashboard)
         return view('dashboard.grafic', [
-            'activities' => $activities,
-            'dadosJson' => $dadosJson,
-            'completeActivity' => $completeActivity,
-            'pendingActivity' => $pendingActivity,
-            'rescheduledActivity' => $rescheduledActivity,
-            'products' => $products ?? [], // Certifique-se de que essa variável é definida
-            'new_products' => $newProducts ?? [], // Certifique-se de que essa variável é definida
+            'activities' => $filteredActivities, // Passa atividades filtradas para a tabela
+            'dadosJson' => $dadosJson, // Dados formatados para o gráfico
+            'completeActivity' => $completeActivity, // Total de atividades completas
+            'pendingActivity' => $pendingActivity, // Total de atividades pendentes
+            'rescheduledActivity' => $rescheduledActivity, // Total de atividades adiadas
         ]);
     }
+    
 
+
+    
+    
 }
 
 
