@@ -133,8 +133,8 @@ Route::middleware(['permission:pos.menu'])->group(function () {
     Route::post('/pos/order', [OrderController::class, 'storeOrder'])->name('pos.storeOrder');
 });
 
-// ====== ORDERS ======
-Route::middleware(['permission:orders.menu'])->group(function () {
+// ====== Monitoria ======
+Route::middleware(['permission:monitoria.menu'])->group(function () {
     Route::get('/geral', [ActivityController::class, 'index'])->name('geral.index');
     Route::get('/geral-rescheduled', [ActivityController::class, 'rescheduled'])->name('geral-rescheduled');
     Route::get('/geral-completed', [ActivityController::class, 'complete'])->name('geral-completed');
@@ -152,6 +152,156 @@ Route::middleware(['permission:orders.menu'])->group(function () {
     Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
 });
 
+// ====== ATS ======
+Route::middleware(['permission:ats.menu'])->group(function () {
+    Route::get('/ats-geral', [ActivityController::class, 'index'])->name('ats.geral.index');
+    Route::get('/ats-geral-rescheduled', [ActivityController::class, 'ats-rescheduled'])->name('ats.geral-rescheduled');
+    Route::get('/ats-geral-completed', [ActivityController::class, 'ats-complete'])->name('ats.geral-completed');
+    Route::get('/ats-geral-pending', [ActivityController::class, 'ats-pending'])->name('ats.geral-pending');
+    Route::get('/ats-activites/export', [ActivityController::class, 'ats-exportData'])->name('ats.activites.exportData');
+    Route::resource('/ats-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== SMI ======
+Route::middleware(['permission:smi.menu'])->group(function () {
+    Route::get('/smi-geral', [ActivityController::class, 'index'])->name('smi.geral.index');
+    Route::get('/smi-geral-rescheduled', [ActivityController::class, 'smi-rescheduled'])->name('smi.geral-rescheduled');
+    Route::get('/smi-geral-completed', [ActivityController::class, 'smi-complete'])->name('smi.geral-completed');
+    Route::get('/smi-geral-pending', [ActivityController::class, 'smi-pending'])->name('smi.geral-pending');
+    Route::get('/smi-activites/export', [ActivityController::class, 'smi-exportData'])->name('smi.activites.exportData');
+    Route::resource('/smi-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== SMI ======
+Route::middleware(['permission:smi.menu'])->group(function () {
+    Route::get('/smi-geral', [ActivityController::class, 'index'])->name('smi.geral.index');
+    Route::get('/smi-geral-rescheduled', [ActivityController::class, 'smi-rescheduled'])->name('smi.geral-rescheduled');
+    Route::get('/smi-geral-completed', [ActivityController::class, 'smi-complete'])->name('smi.geral-completed');
+    Route::get('/smi-geral-pending', [ActivityController::class, 'smi-pending'])->name('smi.geral-pending');
+    Route::get('/smi-activites/export', [ActivityController::class, 'smi-exportData'])->name('smi.activites.exportData');
+    Route::resource('/smi-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+}); 
+
+// ====== TB ======
+Route::middleware(['permission:tb.menu'])->group(function () {
+    Route::get('/tb-geral', [ActivityController::class, 'index'])->name('ec.geral.index');
+    Route::get('/tb-geral-rescheduled', [ActivityController::class, 'ec-rescheduled'])->name('ec.geral-rescheduled');
+    Route::get('/tb-geral-completed', [ActivityController::class, 'ec-complete'])->name('ec.geral-completed');
+    Route::get('/tb-geral-pending', [ActivityController::class, 'ec-pending'])->name('ec.geral-pending');
+    Route::get('/tb-activites/export', [ActivityController::class, 'ec-exportData'])->name('ec.activites.exportData');
+    Route::resource('/tb-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== EC ======
+Route::middleware(['permission:ec.menu'])->group(function () {
+    Route::get('/ec-geral', [ActivityController::class, 'index'])->name('ec.geral.index');
+    Route::get('/ec-geral-rescheduled', [ActivityController::class, 'ec-rescheduled'])->name('ec.geral-rescheduled');
+    Route::get('/ec-geral-completed', [ActivityController::class, 'ec-complete'])->name('ec.geral-completed');
+    Route::get('/ec-geral-pending', [ActivityController::class, 'ec-pending'])->name('ec.geral-pending');
+    Route::get('/ec-activites/export', [ActivityController::class, 'ec-exportData'])->name('ec.activites.exportData');
+    Route::resource('/ec-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== Administração ======
+Route::middleware(['permission:admin.menu'])->group(function () {
+    Route::get('/admin-geral', [ActivityController::class, 'index'])->name('admin.geral.index');
+    Route::get('/admin-geral-rescheduled', [ActivityController::class, 'admin-rescheduled'])->name('admin.geral-rescheduled');
+    Route::get('/admin-geral-completed', [ActivityController::class, 'admin-complete'])->name('admin.geral-completed');
+    Route::get('/admin-geral-pending', [ActivityController::class, 'admin-pending'])->name('admin.geral-pending');
+    Route::get('/admin-activites/export', [ActivityController::class, 'admin-exportData'])->name('admin.activites.exportData');
+    Route::resource('/ec-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== CT ======
+Route::middleware(['permission:ct.menu'])->group(function () {
+    Route::get('/ct-geral', [ActivityController::class, 'index'])->name('ct.geral.index');
+    Route::get('/ct-geral-rescheduled', [ActivityController::class, 'ct-rescheduled'])->name('ct.geral-rescheduled');
+    Route::get('/ct-geral-completed', [ActivityController::class, 'ct-complete'])->name('ct.geral-completed');
+    Route::get('/ct-geral-pending', [ActivityController::class, 'ct-pending'])->name('ct.geral-pending');
+    Route::get('/ct-activites/export', [ActivityController::class, 'ct-exportData'])->name('ct.activites.exportData');
+    Route::resource('/ct-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+// ====== SMI ======
+Route::middleware(['permission:smi.menu'])->group(function () {
+    Route::get('/smi-geral', [ActivityController::class, 'index'])->name('smi.geral.index');
+    Route::get('/smi-geral-rescheduled', [ActivityController::class, 'smi-rescheduled'])->name('smi.geral-rescheduled');
+    Route::get('/smi-geral-completed', [ActivityController::class, 'smi-complete'])->name('smi.geral-completed');
+    Route::get('/smi-geral-pending', [ActivityController::class, 'smi-pending'])->name('smi.geral-pending');
+    Route::get('/smi-activites/export', [ActivityController::class, 'smi-exportData'])->name('smi.activites.exportData');
+    Route::resource('/smi-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
 // ====== DATABASE BACKUP ======
 Route::middleware(['permission:database.menu'])->group(function () {
     Route::get('/database/backup', [DatabaseBackupController::class, 'index'])->name('backup.index');

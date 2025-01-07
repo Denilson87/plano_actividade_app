@@ -21,16 +21,16 @@
                 </li>
                 <hr>
 
-                @if (auth()->user()->can('orders.menu'))
+                @if (auth()->user()->can('monitoria.menu'))
                 <li>
-                    <a href="#orders" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                    <a href="#monitoria" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-basket-shopping"></i>
-                        <span class="ml-3"><b>Geral</b></span>
+                        <span class="ml-3"><b>Actividades M&A</b></span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
                     </a>
-                    <ul id="orders" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+                    <ul id="monitoria" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
 
                         <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
                             <a href="{{ route('geral-pending') }}">
@@ -51,6 +51,218 @@
                     </ul>
                 </li>
                 @endif
+                @if (auth()->user()->can('ats.menu'))
+                <li>
+                    <a href="#ats" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades ATS</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="ats" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if (auth()->user()->can('smi.menu'))
+                <li>
+                    <a href="#smi" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades SMI</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="smi" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if (auth()->user()->can('ct.menu'))
+                <li>
+                    <a href="#ct" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades C&T</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="ct" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if (auth()->user()->can('ec.menu'))
+                <li>
+                    <a href="#ec" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades C&T</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="ec" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if (auth()->user()->can('tb.menu'))
+                <li>
+                    <a href="#tb" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades TB</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="tb" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                @if (auth()->user()->can('logistica.menu'))
+                <li>
+                    <a href="#logistica" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades Logistica</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="logistica" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if (auth()->user()->can('admin.menu'))
+                <li>
+                    <a href="#admin" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="ml-3"><b>Actividades Administração</b></span>
+                        <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                        </svg>
+                    </a>
+                    <ul id="admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+                        <li class="{{ Request::is('/geral-pending*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-pending') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades pendentes</b></span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ Request::is('/geral-rescheduled*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-rescheduled') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Actividades Adiadas</b></span>
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('/geral-completed*') ? 'active' : '' }}">
+                            <a href="{{ route('geral-completed') }}">
+                                <i class="fa-solid fa-arrow-right"></i><span><b>Grau de cumprimentos</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
                 @if (auth()->user()->can('product.menu'))
                 <li>
                     <a href="#products" class="collapsed" data-toggle="collapse" aria-expanded="false">

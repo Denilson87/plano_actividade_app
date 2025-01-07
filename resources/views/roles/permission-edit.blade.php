@@ -37,8 +37,34 @@
             'name' => 'Product'
         ],
         [
-            'slug' => 'orders',
-            'name' => 'Orders'
+            'slug' => 'monitoria',
+            'name' => 'Monitoria'
+        ],
+        [
+            'slug' => 'admin',
+            'name' => 'Admin'
+        ],
+        [
+            'slug' => 'ats',
+            'name' => 'ATS'
+        ],
+        [
+            'slug' => 'ct',
+            'name' => 'CT'
+        ],
+        [
+            'slug'=>'smi',
+            'name'=>'SMI'
+            
+        ],
+        [
+            'slug' => 'tb',
+            'name' => 'TB'
+        ],
+        [
+            'slug'=>'logistica',
+            'name'=>'Logistica'
+            
         ],
         [
             'slug' => 'stock',

@@ -36,12 +36,51 @@
             'name' => 'Product'
         ],
         [
-            'slug' => 'orders',
-            'name' => 'Orders'
+            'slug' => 'monitoria',
+            'name' => 'Monitoria'
         ],
         [
-            'slug' => 'stock',
-            'name' => 'Stock'
+            'slug' => 'ats',
+            'name' => 'ATS'
+        ],
+        [
+            'slug' => 'ct',
+            'name' => 'CT'
+        ],
+        [
+            'slug'=>'smi',
+            'name'=>'SMI'
+            
+        ],
+        [
+            'slug' => 'monitoria',
+            'name' => 'Monitoria'
+        ],
+        [
+            'slug' => 'ats',
+            'name' => 'ATS'
+        ],
+        [
+            'slug' => 'ct',
+            'name' => 'CT'
+        ],
+        [
+            'slug' => 'tb',
+            'name' => 'TB'
+        ],
+        [
+            'slug'=>'smi',
+            'name'=>'SMI'
+            
+        ],
+        [
+            'slug' => 'admin',
+            'name' => 'Admin'
+        ],
+        [
+            'slug'=>'logistica',
+            'name'=>'Logistica'
+            
         ],
         [
             'slug' => 'roles',
