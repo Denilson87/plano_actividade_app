@@ -4,9 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-NUMERO TOTAL DOS SIMS DIVIDIDO PELA SOMA DOS SIMS E DOS NAOS
-
+//NUMERO TOTAL DOS SIMS DIVIDIDO PELA SOMA DOS SIMS E DOS NAOS
 
 return new class extends Migration
 {
@@ -98,10 +96,17 @@ return new class extends Migration
             $table->string('pacientes_na_dd_vs_openmrs_reg_correctos');
             $table->string('pacientes_na_dd_vs_openmrs_desvio');
             
-            $table->integer('pontuacao_geral');
-            $table->integer('pontuacao_humanos');
-            $table->integer('pontuacao_desempenho_das_unidades_sanitarias');
+            $table->integer('pontuacao_padroes_de_desempenho_indicadores');
+            $table->integer('pontuacao_recursos_humanos');
+            $table->integer('pontuacao_verifique_se_os_resultados_das_avaliacoes_estao_coladas_na_sala');
             
+            $table->integer('pontuacao_verifique_se_o_registo_do_Livro_ATS_1_sector_contempla_os_seguintes_criterios:');
+            $table->integer('pontuacao_verifique_se_o_registo_diario_de_ITS_1_sector_contempla_os_seguintes_criterios:');
+            $table->integer('pontuacao_verifique_se_o_registo_do_ivro_tarv_fm_openmrs_seguintes_criterios');
+       
+            $table->integer('pontuacao_avaliar_a_qualidade_digitacao_registo_da_fm_extracao_do_relatorio_de_qualidade_de_dados_e_analise');
+            $table->integer('pontuacao_avaliar_a_qualidade_de_digitacao_e_registo_da_fm_ficha_de_contagem_extracao_do_relatorio_aqd_hiv_e_analise_dos_seguintes_aspectos');
+            $table->integer('pontuaca_avaliar_a_qualidade_de_digitacao_e_registo_da_fm_extracao_do_lista_de_atualmente_em_tarv_33_dias__e_analise_dos_seguintes_aspectos');
         });
     }
 
@@ -110,6 +115,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('supervision');
+       schema::dropIfExists('supervision');
     }
 };
