@@ -41,6 +41,14 @@
             'name' => 'Monitoria'
         ],
         [
+            'slug' => 'contabilidade',
+            'name' => 'Contabilidade'
+        ],
+        [
+            'slug' => 'rh',
+            'name' => 'RH'
+        ],
+        [
             'slug' => 'admin',
             'name' => 'Admin'
         ],

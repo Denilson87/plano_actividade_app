@@ -284,6 +284,64 @@ Route::middleware(['permission:ct.menu'])->group(function () {
     // Stock Management
     Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
 });
+
+// ====== RH ======
+Route::middleware(['permission:rh.menu'])->group(function () {
+    Route::get('/rh-geral', [ActivityController::class, 'index'])->name('rh.geral.index');
+    Route::get('/rh-geral-rescheduled', [ActivityController::class, 'rh-rescheduled'])->name('rh.geral-rescheduled');
+    Route::get('/rh-geral-completed', [ActivityController::class, 'rh-complete'])->name('rh.geral-completed');
+    Route::get('/rh-geral-pending', [ActivityController::class, 'rh-pending'])->name('rh.geral-pending');
+    Route::get('/rh-activites/export', [ActivityController::class, 'rh-exportData'])->name('rh.activites.exportData');
+    Route::resource('/rh-geral', ActivityController::class);
+    
+    
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+    
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== Contabilidade ======
+Route::middleware(['permission:contabilidade.menu'])->group(function () {
+    Route::get('/contabilidade-geral', [ActivityController::class, 'index'])->name('contabilidade.geral.index');
+    Route::get('/contabilidade-geral-rescheduled', [ActivityController::class, 'contabilidade-rescheduled'])->name('contabilidade.geral-rescheduled');
+    Route::get('/contabilidade-geral-completed', [ActivityController::class, 'contabilidade-complete'])->name('contabilidade.geral-completed');
+    Route::get('/contabilidadei-geral-pending', [ActivityController::class, 'contabilidade-pending'])->name('contabilidade.geral-pending');
+    Route::get('/contabilidade-activites/export', [ActivityController::class, 'contabilidade-exportData'])->name('contabilidade.activites.exportData');
+    Route::resource('/contabilidade-geral', ActivityController::class);
+    
+   
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
+// ====== Supervisao ======
+Route::middleware(['permission:contabilidade.menu'])->group(function () {
+    Route::get('/contabilidade-geral', [ActivityController::class, 'index'])->name('contabilidade.geral.index');
+    Route::get('/contabilidade-geral-rescheduled', [ActivityController::class, 'contabilidade-rescheduled'])->name('contabilidade.geral-rescheduled');
+    Route::get('/contabilidade-geral-completed', [ActivityController::class, 'contabilidade-complete'])->name('contabilidade.geral-completed');
+    Route::get('/contabilidadei-geral-pending', [ActivityController::class, 'contabilidade-pending'])->name('contabilidade.geral-pending');
+    Route::get('/contabilidade-activites/export', [ActivityController::class, 'contabilidade-exportData'])->name('contabilidade.activites.exportData');
+    Route::resource('/contabilidade-geral', ActivityController::class);
+    
+    
+    // Pending Due
+    Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
+    Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');
+    Route::post('/update/due', [OrderController::class, 'updateDue'])->name('order.updateDue');
+
+    // Stock Management
+    Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+});
+
 // ====== SMI ======
 Route::middleware(['permission:smi.menu'])->group(function () {
     Route::get('/smi-geral', [ActivityController::class, 'index'])->name('smi.geral.index');
@@ -292,8 +350,7 @@ Route::middleware(['permission:smi.menu'])->group(function () {
     Route::get('/smi-geral-pending', [ActivityController::class, 'smi-pending'])->name('smi.geral-pending');
     Route::get('/smi-activites/export', [ActivityController::class, 'smi-exportData'])->name('smi.activites.exportData');
     Route::resource('/smi-geral', ActivityController::class);
-    
-   
+       
     // Pending Due
     Route::get('/pending/due', [OrderController::class, 'pendingDue'])->name('order.pendingDue');
     Route::get('/order/due/{id}', [OrderController::class, 'orderDueAjax'])->name('order.orderDueAjax');

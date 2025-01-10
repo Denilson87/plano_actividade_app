@@ -97,7 +97,7 @@ class RoleController extends Controller
 
         Role::create($validatedData);
 
-        return Redirect::route('roles.index')->with('success', 'Role has been created!');
+        return Redirect::route('role.index')->with('success', 'Role has been created!');
     }
 
     public function roleEdit(Int $id)
@@ -126,7 +126,7 @@ class RoleController extends Controller
     {
         Role::destroy($id);
 
-        return Redirect::route('roles.index')->with('success', 'Role has been deleted!');
+        return Redirect::route('role.index')->with('success', 'Role has been deleted!');
     }
 
     public function rolePermissionIndex()
