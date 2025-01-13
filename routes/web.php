@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\supervisionController;
 use App\Http\Controllers\Dashboard\ActivityController;
 use App\Http\Controllers\Dashboard\geralControllerr;
 use App\Http\Controllers\Dashboard\ProductController;
@@ -323,14 +324,12 @@ Route::middleware(['permission:contabilidade.menu'])->group(function () {
     Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
 });
 
-// ====== Supervisao ======
-Route::middleware(['permission:contabilidade.menu'])->group(function () {
-    Route::get('/contabilidade-geral', [ActivityController::class, 'index'])->name('contabilidade.geral.index');
-    Route::get('/contabilidade-geral-rescheduled', [ActivityController::class, 'contabilidade-rescheduled'])->name('contabilidade.geral-rescheduled');
-    Route::get('/contabilidade-geral-completed', [ActivityController::class, 'contabilidade-complete'])->name('contabilidade.geral-completed');
-    Route::get('/contabilidadei-geral-pending', [ActivityController::class, 'contabilidade-pending'])->name('contabilidade.geral-pending');
-    Route::get('/contabilidade-activites/export', [ActivityController::class, 'contabilidade-exportData'])->name('contabilidade.activites.exportData');
-    Route::resource('/contabilidade-geral', ActivityController::class);
+
+// ====== Supervision ======
+Route::middleware(['permission:supervision.menu'])->group(function () {
+    Route::get('/supervision-show', [supervisionController::class, 'index'])->name('supervision.geral');
+    Route::get('/supervision-create', [supervisionController::class, 'create'])->name('supervision.create');
+    Route::resource('/contabilidade-geral', supervisionController::class);
     
     
     // Pending Due

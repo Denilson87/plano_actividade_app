@@ -75,6 +75,11 @@
             
         ],
         [
+            'slug'=>'supervision',
+            'name'=>'Supervision'
+            
+        ],        
+        [
             'slug' => 'stock',
             'name' => 'Stock'
         ],

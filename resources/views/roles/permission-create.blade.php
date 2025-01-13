@@ -91,6 +91,11 @@
             'name' => 'RH'
         ],
         [
+            'slug'=>'supervision',
+            'name'=>'Supervision'
+            
+        ], 
+        [
             'slug' => 'roles',
             'name' => 'Roles'
         ],

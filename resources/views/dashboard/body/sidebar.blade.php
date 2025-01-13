@@ -376,7 +376,7 @@
                     </a>
                 </li>
                 @endif -->
-                 @if (auth()->user()->can('salary.menu'))
+                 @if (auth()->user()->can('supervision.menu'))
                 <li>
                     <a href="#advance-salary" class="collapsed" data-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-cash-register"></i>
@@ -393,7 +393,7 @@
                             </a>
                         </li>
                         <li class="{{ Request::is('advance-salary/create*') ? 'active' : '' }}">
-                            <a href="{{ route('advance-salary.create') }}">
+                            <a href="{{ route('supervision.create') }}">
                                 <i class="fa-solid fa-arrow-right"></i><span><b>Criar / importar</b> </span>
                             </a>
                         </li>
@@ -473,7 +473,7 @@
                 <li class="{{ Request::is('profile*') ? 'active' : '' }}">
                     <a href="{{ route('profile') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3"><b>Meu perfil</b></span>
+                        <span class="ml-3"><b>Minha conta</b></span>
                     </a>
                 </li>
                 @endif
