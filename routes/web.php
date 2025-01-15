@@ -329,6 +329,7 @@ Route::middleware(['permission:contabilidade.menu'])->group(function () {
 Route::middleware(['permission:supervision.menu'])->group(function () {
     Route::get('/supervision-show', [supervisionController::class, 'index'])->name('supervision.geral');
     Route::get('/supervision-create', [supervisionController::class, 'create'])->name('supervision.create');
+    Route::post('/supervision-store', [SupervisionController::class, 'store'])->name('supervision.store');
     Route::resource('/contabilidade-geral', supervisionController::class);
     
     
@@ -357,6 +358,7 @@ Route::middleware(['permission:smi.menu'])->group(function () {
 
     // Stock Management
     Route::get('/stock', [OrderController::class, 'stockManage'])->name('order.stockManage');
+    
 });
 // ====== DATABASE BACKUP ======
 Route::middleware(['permission:database.menu'])->group(function () {
