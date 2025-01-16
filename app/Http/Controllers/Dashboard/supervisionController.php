@@ -118,6 +118,7 @@ class SupervisionController extends Controller
                 'pont_rel_quality_dados' => 'nullable|numeric',
                 'pont_extra_aqd_hiv' => 'nullable|numeric',
                 'pont_extra_tarv_33' => 'nullable|numeric',
+                'obs'=>'nullable|string',
                         
         ];
     

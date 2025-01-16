@@ -85,7 +85,7 @@ class Supervision extends Model
          'pont_rel_quality_dados',
          'pont_extra_aqd_hiv',
          'pont_extra_tarv_33',   
-       
+         'obs',       
     ];
 
     public $sortable = [
